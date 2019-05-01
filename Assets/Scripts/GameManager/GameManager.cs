@@ -56,14 +56,14 @@ public class GameManager : MonoBehaviour {
                     case ("Water"):
                         if (hit.collider.tag == "Seed")
                         {
-                            /*if (player.GetComponent<PlayerTool>().decreaseWaterCan())
+                            if (player.GetComponent<Water>().decreaseWaterCan())
                             {
                                 hit.collider.gameObject.GetComponent<Seed>().watered = true;
-                            }*/
+                            }
                         }
                         else if (hit.collider.tag == "River")
                         {
-                            //player.GetComponent<PlayerTool>().fillWaterCan();
+                            player.GetComponent<Water>().fillWaterCan();
                         }
                         break;
                     case ("Axe"):
