@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 222794054777870636}
   - component: {fileID: 114530607005362140}
   - component: {fileID: 114800512543837494}
+  - component: {fileID: 114973225085567578}
   m_Layer: 5
   m_Name: Inventory Slot
   m_TagString: Untagged
@@ -162,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.5, g: 0.38089624, b: 0.26179245, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -202,6 +203,21 @@ MonoBehaviour:
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114973225085567578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1667661939325780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847273a935a0a6743be43f612b0268f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNumber: {fileID: 114292569052031006}
+  itemImage: {fileID: 114706961299392696}
+  item: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!222 &222418110490433068
 CanvasRenderer:
   m_ObjectHideFlags: 1
