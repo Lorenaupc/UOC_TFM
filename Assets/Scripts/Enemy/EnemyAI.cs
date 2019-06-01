@@ -27,17 +27,48 @@ public class EnemyAI : MonoBehaviour {
 
 	void Start () {
 
-        currentState = EnemyState.idle;
-        animator = GetComponent<Animator>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        health = 3;
-        attackHit = 1;
-        speed = 2f;
+        if (transform.localScale.x == 2)
+        {
+            currentState = EnemyState.idle;
+            animator = GetComponent<Animator>();
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            health = 3;
+            attackHit = 1;
+            speed = 2f;
 
-        rb2d = GetComponent<Rigidbody2D>();
+            rb2d = GetComponent<Rigidbody2D>();
 
-        chaseRadious = 4;
-        attackRadious = 1.5f;
+            chaseRadious = 8;
+            attackRadious = 0.1f;
+        }
+        else if (transform.localScale.x == 1)
+        {
+            currentState = EnemyState.idle;
+            animator = GetComponent<Animator>();
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            health = 10;
+            attackHit = 2;
+            speed = 3f;
+
+            rb2d = GetComponent<Rigidbody2D>();
+
+            chaseRadious = 10;
+            attackRadious = 0.5f;
+        }     
+        else if (transform.localScale.x == 7)
+        {
+            currentState = EnemyState.idle;
+            animator = GetComponent<Animator>();
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            health = 100;
+            attackHit = 3;
+            speed = 1f;
+
+            rb2d = GetComponent<Rigidbody2D>();
+
+            chaseRadious = 20;
+            attackRadious = 1f;
+        }
 	}
 	
 	void FixedUpdate () {

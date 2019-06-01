@@ -10,6 +10,7 @@ public class InventoryManager : MonoBehaviour {
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private Text descriptionText;
     [SerializeField] private GameObject useButton;
+    public InventoryItem currentItem;
 
     public void SetText(string description, bool buttonActive)
     {
@@ -40,4 +41,17 @@ public class InventoryManager : MonoBehaviour {
             }
         }
     }
+
+    public void SetupDescriptionButton(string description, bool buttonActive, InventoryItem newItem)
+    {
+        currentItem = newItem;
+        descriptionText.text = description;
+        useButton.SetActive(buttonActive);
+    }
+
+    public void UseButtonPressed()
+    {
+        if (currentItem) currentItem.Use();
+    }
+
 }

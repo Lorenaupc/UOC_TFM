@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Pineapple
   m_EditorClassIdentifier: 
   itemName: "Pi\xF1a"
-  itemDescription: 
+  itemDescription: "Pi\xF1a"
   itemImage: {fileID: 21301534, guid: e36b2b7de5e0a584f84f0f2699c5de19, type: 3}
   count: 1
   unique: 0
+  usable: 1

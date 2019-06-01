@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Cabbage
   m_EditorClassIdentifier: 
   itemName: Lechuga
-  itemDescription: 
+  itemDescription: Lechuga
   itemImage: {fileID: 21301440, guid: e36b2b7de5e0a584f84f0f2699c5de19, type: 3}
   count: 1
   unique: 0
+  usable: 1

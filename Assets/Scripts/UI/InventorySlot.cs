@@ -22,4 +22,12 @@ public class InventorySlot : MonoBehaviour
             itemNumber.text = "" + item.count;
         }
     }
+
+    public void OnClicked()
+    {
+        if (item)
+        {
+            manager.SetupDescriptionButton(item.itemDescription, item.usable, item);
+        }
+    }
 }

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Potato
   m_EditorClassIdentifier: 
   itemName: Patata
-  itemDescription: 
+  itemDescription: Patata
   itemImage: {fileID: 21301434, guid: e36b2b7de5e0a584f84f0f2699c5de19, type: 3}
   count: 1
   unique: 0
+  usable: 1

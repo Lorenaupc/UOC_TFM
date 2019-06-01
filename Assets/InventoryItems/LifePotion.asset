@@ -16,3 +16,4 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: b0450419fde914a49b94220b0f821f41, type: 3}
   count: 1
   unique: 0
+  usable: 1
