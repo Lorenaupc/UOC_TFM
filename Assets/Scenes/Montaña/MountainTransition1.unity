@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 57751492}
   - component: {fileID: 57751491}
   m_Layer: 0
-  m_Name: Ground
+  m_Name: GroundMountain1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2125,7 +2125,7 @@ GameObject:
   - component: {fileID: 364889371}
   - component: {fileID: 364889370}
   m_Layer: 0
-  m_Name: Bridge
+  m_Name: BridgeMountain1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2728,7 +2728,7 @@ GameObject:
   - component: {fileID: 1543244452}
   - component: {fileID: 503120020}
   m_Layer: 31
-  m_Name: Normal Grass
+  m_Name: Normal Grass Mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2970,7 +2970,7 @@ GameObject:
   - component: {fileID: 1448879069}
   - component: {fileID: 1448879068}
   m_Layer: 31
-  m_Name: Collision
+  m_Name: CollisionMountain1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5754,7 +5754,7 @@ GameObject:
   - component: {fileID: 1596456416}
   - component: {fileID: 1596456415}
   m_Layer: 0
-  m_Name: Edges
+  m_Name: EdgesMountain1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

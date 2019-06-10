@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 942708762}
   - component: {fileID: 942708761}
   m_Layer: 0
-  m_Name: Collision
+  m_Name: CollisionCementerio1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2978,7 +2978,7 @@ GameObject:
   - component: {fileID: 1662155607}
   - component: {fileID: 1662155606}
   m_Layer: 0
-  m_Name: Decoration
+  m_Name: DecorationCementerio1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5209,7 +5209,7 @@ GameObject:
   - component: {fileID: 1678637505}
   - component: {fileID: 1678637504}
   m_Layer: 0
-  m_Name: Ground
+  m_Name: GroundCementerio1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12296,7 +12296,7 @@ GameObject:
   - component: {fileID: 2023445334}
   - component: {fileID: 2023445333}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Cementerio1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

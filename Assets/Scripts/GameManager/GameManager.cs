@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    internal GameObject player;
+    public GameObject player;
     internal GameObject canvas;
 
     public Sprite groundObject;
@@ -14,10 +15,11 @@ public class GameManager : MonoBehaviour {
     public Sprite normalGrassObject;
     public Sprite grassObject;
 
-	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player");
-        canvas = GameObject.FindGameObjectWithTag("Canvas");
-	}
+    private void Awake()
+    {
+        DontDestroyOnLoad(player);
+        DontDestroyOnLoad(this);
+    }
 
     void Update()
     {
