@@ -45,12 +45,12 @@ public class PlayerMovement : MonoBehaviour {
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetButtonDown("Attack") && currentState != PlayerState.attacking && currentState != PlayerState.stagger)
+        if (Input.GetButtonDown("Attack") && currentState != PlayerState.attacking && currentState != PlayerState.stagger && !GetComponent<PlayerHealth>().died)
         {
             StartCoroutine(Attack());
         }
 
-        if (currentState == PlayerState.walking || currentState == PlayerState.idle)
+        if (currentState == PlayerState.walking || currentState == PlayerState.idle && !GetComponent<PlayerHealth>().died)
         {
             UpdateAnimationAndMovement();
         }
@@ -99,6 +99,9 @@ public class PlayerMovement : MonoBehaviour {
             rigidbody2d.velocity = Vector2.zero;
             currentState = PlayerState.idle;
             rigidbody2d.velocity = Vector2.zero;
+
+            //mio
+            GetComponent<PlayerHealth>().changeHealth(-1);
         }
     }
 }

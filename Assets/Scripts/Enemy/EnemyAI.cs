@@ -26,14 +26,14 @@ public class EnemyAI : MonoBehaviour {
     private Animator animator;
 
 	void Start () {
-
+        
         if (transform.localScale.x == 2)
         {
             currentState = EnemyState.idle;
             animator = GetComponent<Animator>();
             target = GameObject.FindGameObjectWithTag("Player").transform;
-            health = 3;
-            attackHit = 1;
+            health = 5;
+            attackHit = 2;
             speed = 2f;
 
             rb2d = GetComponent<Rigidbody2D>();
@@ -46,8 +46,8 @@ public class EnemyAI : MonoBehaviour {
             currentState = EnemyState.idle;
             animator = GetComponent<Animator>();
             target = GameObject.FindGameObjectWithTag("Player").transform;
-            health = 10;
-            attackHit = 2;
+            health = 3;
+            attackHit = 1;
             speed = 3f;
 
             rb2d = GetComponent<Rigidbody2D>();
@@ -77,21 +77,28 @@ public class EnemyAI : MonoBehaviour {
 
     void checkDistance()
     {
-        if (Vector3.Distance(target.position,transform.position) <= chaseRadious && Vector3.Distance(target.position, transform.position) > attackRadious)
+        if (target != null && target.GetComponent<PlayerHealth>().health > 0)
         {
-            if (currentState == EnemyState.idle || currentState == EnemyState.walk && currentState != EnemyState.stagger)
+            if (Vector3.Distance(target.position, transform.position) <= chaseRadious && Vector3.Distance(target.position, transform.position) > attackRadious)
             {
-                Vector3 temp = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-                rb2d.MovePosition(temp);
-                SetAnimatorsFloats(temp - transform.position);
-                changeState(EnemyState.walk);
-                animator.SetBool("wakingUp", true);
+                if (currentState == EnemyState.idle || currentState == EnemyState.walk && currentState != EnemyState.stagger)
+                {
+                    Vector3 temp = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+                    rb2d.MovePosition(temp);
+                    SetAnimatorsFloats(temp - transform.position);
+                    changeState(EnemyState.walk);
+                    animator.SetBool("wakingUp", true);
+                }
+            }
+            else if (Vector3.Distance(target.position, transform.position) > chaseRadious)
+            {
+                animator.SetBool("wakingUp", false);
             }
         }
-        else if (Vector3.Distance(target.position, transform.position) > chaseRadious)
+        else
         {
+            changeState(EnemyState.idle);
             animator.SetBool("wakingUp", false);
-            //changeState(EnemyState.idle);
         }
     }
 
@@ -123,6 +130,45 @@ public class EnemyAI : MonoBehaviour {
             hit.velocity = Vector2.zero;
             currentState = EnemyState.idle;
             hit.velocity = Vector2.zero;
+
+            decreaseHealth(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().attackPower);
         }
     }
+
+    public void decreaseHealth(int attackPower)
+    {
+        health -= attackPower;
+        if (health == 0)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            StartCoroutine(dead());
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            StartCoroutine(redBlink());
+        }
+    }
+
+    private IEnumerator redBlink()
+    {
+        Color end = Color.white;
+        Color start = Color.red;
+        for (float t = 0f; t < 1; t += Time.deltaTime)
+        {
+            float normalizedTime = t / 0.8f;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(start, end, normalizedTime);
+            yield return null;
+        }
+        GetComponent<SpriteRenderer>().color = end;
+    }
+
+    private IEnumerator dead()
+    {
+        animator.SetTrigger("death");
+        chaseRadious = 0;
+        yield return new WaitForSeconds(1f);
+        Destroy(this.gameObject);
+    }
+
 }

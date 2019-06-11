@@ -7,8 +7,9 @@ public class PlayerHealth : MonoBehaviour {
 
     internal int health;
     internal string name;
-    private bool die;
+    internal bool died;
     public Text hearts;
+    internal int attackPower;
 
     private void Awake()
     {
@@ -17,12 +18,13 @@ public class PlayerHealth : MonoBehaviour {
 
     void Start () {
         health = 4;
-        die = false;
+        attackPower = 1;
+        died = false;
 
         hearts.text = "x" + health;
 	}
 	
-	void changeHealth(int amount)
+	public void changeHealth(int amount)
     {
         switch (amount)
         {
@@ -34,13 +36,38 @@ public class PlayerHealth : MonoBehaviour {
                 health--;
                 if (health.Equals(0))
                 {
-                    die = true;
+                    hearts.text = "x" + health;
+                    GetComponent<SpriteRenderer>().color = Color.red;
+                    died = true;
+                    StartCoroutine(dead());
                 }
                 else
                 {
+                    GetComponent<SpriteRenderer>().color = Color.red;
+                    StartCoroutine(redBlink());
                     hearts.text = "x" + health;
                 }
                 break;
         }
+    }
+
+    private IEnumerator redBlink()
+    {
+        Color end = Color.white;
+        Color start = Color.red;
+        for (float t = 0f; t < 1; t += Time.deltaTime)
+        {
+            float normalizedTime = t / 0.8f;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(start, end, normalizedTime);
+            yield return null;
+        }
+        GetComponent<SpriteRenderer>().color = end;
+    }
+
+    private IEnumerator dead()
+    {
+        GetComponent<PlayerMovement>().animator.SetTrigger("death");
+        yield return new WaitForSeconds(1f);
+        Destroy(this.gameObject);
     }
 }
