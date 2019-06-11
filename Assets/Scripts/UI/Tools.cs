@@ -162,6 +162,63 @@ public class Tools : MonoBehaviour {
         }
     }
 
+    internal void updateCountItemsExternal(int position)
+    {
+        switch (position)
+        {
+            case 4:
+                textfour.text = fourthItem.count.ToString();
+                if (fourthItem.count == 0)
+                {
+                    objectfour.sprite = null;
+                    textfour.text = "";
+                    fourthItem.positionOnUI = 0;
+                    fourthItem.isOnUI = false;
+
+                    objectfour.enabled = false;
+                    textfour.enabled = false;
+
+                    fourthItem = null;
+                }
+
+                break;
+            case 5:
+
+                textfive.text = fifthItem.count.ToString();
+                if (fifthItem.count == 0)
+                {
+                    objectfive.sprite = null;
+                    textfive.text = "";
+                    fifthItem.positionOnUI = 0;
+                    fifthItem.isOnUI = false;
+
+                    objectfive.enabled = false;
+                    textfive.enabled = false;
+
+                    fifthItem = null;
+                }
+
+                break;
+            case 6:
+
+                textsix.text = sixItem.count.ToString();
+                if (sixItem.count == 0)
+                {
+                    objectsix.sprite = null;
+                    textsix.text = "";
+                    sixItem.positionOnUI = 0;
+                    sixItem.isOnUI = false;
+
+                    objectsix.enabled = false;
+                    textsix.enabled = false;
+
+                    sixItem = null;
+                }
+
+                break;
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown("1"))
@@ -176,7 +233,7 @@ public class Tools : MonoBehaviour {
         {
             setSeed();
         }
-        else if (Input.GetKeyDown("4"))
+        else if (Input.GetKeyDown("4") && !inventoryManager.isActiveAndEnabled)
         {
             if (fourthItem != null)
             {
@@ -201,7 +258,7 @@ public class Tools : MonoBehaviour {
                 }
             }
         }
-        else if (Input.GetKeyDown("5"))
+        else if (Input.GetKeyDown("5") && !inventoryManager.isActiveAndEnabled)
         {
             if (fifthItem != null)
             {
@@ -226,7 +283,7 @@ public class Tools : MonoBehaviour {
                 }
             }
         }
-        else if (Input.GetKeyDown("6"))
+        else if (Input.GetKeyDown("6") && !inventoryManager.isActiveAndEnabled)
         {
             if (sixItem != null)
             {

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour {
 
+    private Tools mainCanvas;
+
     public PlayerInventory playerInventory;
     [SerializeField] private GameObject blankSlot;
     [SerializeField] private GameObject inventoryPanel;
@@ -29,6 +31,7 @@ public class InventoryManager : MonoBehaviour {
 
     private void Start()
     {
+        mainCanvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>();
         CreateInventory();
         SetText("", false, false, false);
         DeleteInventoryNullItems();
@@ -68,6 +71,13 @@ public class InventoryManager : MonoBehaviour {
             currentItem.Use();
             currentItem.count--;
             ReloadInventoryFromExternal();
+            if (currentItem)
+            {
+                if (currentItem.isOnUI)
+                {
+                    mainCanvas.updateCountItemsExternal(currentItem.positionOnUI);
+                }
+            }
         }
     }
 
@@ -78,6 +88,12 @@ public class InventoryManager : MonoBehaviour {
         {
             if (slot.item.count == 0)
             {
+                if (currentItem == slot.item)
+                {
+                    //currentItem = null;
+                    mainCanvas.updateCountItemsExternal(currentItem.positionOnUI);
+                    SetupDescriptionButton("", false, null, false, false);
+                }
                 playerInventory.inventory.Remove(slot.item);
                 Destroy(slot.gameObject);
             }
