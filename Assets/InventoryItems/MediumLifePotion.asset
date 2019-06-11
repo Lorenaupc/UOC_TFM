@@ -14,6 +14,23 @@ MonoBehaviour:
   itemName: "Poci\xF3n media"
   itemDescription: "Brebaje para recuperar un coraz\xF3n"
   itemImage: {fileID: 21300002, guid: b0450419fde914a49b94220b0f821f41, type: 3}
-  count: 1
+  count: 10
   unique: 0
   usable: 1
+  this_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114100942742720842, guid: ee055869b1984be4db9a1927c0e6cf83,
+          type: 2}
+        m_MethodName: UseHealthPotion
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

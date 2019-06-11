@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour
-{
+public class InventorySlot : MonoBehaviour {
 
     [SerializeField] private Text itemNumber;
     [SerializeField] private Image itemImage;
@@ -28,6 +27,14 @@ public class InventorySlot : MonoBehaviour
         if (item)
         {
             manager.SetupDescriptionButton(item.itemDescription, item.usable, item);
+        }
+    }
+
+    public void Reload()
+    {
+        if (item)
+        {
+            itemNumber.text = "" + item.count;
         }
     }
 }

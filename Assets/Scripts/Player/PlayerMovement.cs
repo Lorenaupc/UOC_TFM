@@ -58,12 +58,20 @@ public class PlayerMovement : MonoBehaviour {
 
     private IEnumerator Attack()
     {
-        animator.SetBool("attacking", true);
-        currentState = PlayerState.attacking;
-        yield return null;
-        animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(0.15f);
-        currentState = PlayerState.walking;
+        if (GetComponent<PlayerEffort>().EnoughEffort())
+        {
+            animator.SetBool("attacking", true);
+            GetComponent<PlayerEffort>().DecreaseEffort(10);
+            currentState = PlayerState.attacking;
+            yield return null;
+            animator.SetBool("attacking", false);
+            yield return new WaitForSeconds(0.15f);
+            currentState = PlayerState.walking;
+        }
+        else
+        {
+            Debug.Log("NOT STAMINA");
+        }
     }
 
     void UpdateAnimationAndMovement()

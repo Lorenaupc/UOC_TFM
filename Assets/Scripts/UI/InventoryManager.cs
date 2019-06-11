@@ -51,7 +51,31 @@ public class InventoryManager : MonoBehaviour {
 
     public void UseButtonPressed()
     {
-        if (currentItem) currentItem.Use();
+        if (currentItem) {
+            currentItem.Use();
+            currentItem.count--;
+            ReloadInventory();
+        }
+    }
+
+    private void ReloadInventory()
+    {
+        InventorySlot[] slots = inventoryPanel.GetComponentsInChildren<InventorySlot>();
+        foreach (InventorySlot slot in slots)
+        {
+            if (slot.item == currentItem){
+                if (currentItem.count > 0)
+                {
+                    slot.Reload();
+                }
+                else
+                {
+                    playerInventory.inventory.Remove(currentItem);
+                    Destroy(slot.gameObject);
+                    SetupDescriptionButton("", false, null);
+                }
+            }  
+        }
     }
 
 }

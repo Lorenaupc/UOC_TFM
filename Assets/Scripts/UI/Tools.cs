@@ -8,27 +8,12 @@ public class Tools : MonoBehaviour {
 
     void Start()
     {
-        currentTool = "";
-    }
-
-    void Update()
-    {
-
+        currentTool = "Hoe";
     }
 
     public void setHoe()
     {
         currentTool = "Hoe";
-    }
-
-    public void setHammer()
-    {
-        currentTool = "Hammer";
-    }
-
-    public void setScyther()
-    {
-        currentTool = "Scyther";
     }
 
     public void setWater()
@@ -37,18 +22,8 @@ public class Tools : MonoBehaviour {
         Debug.Log("WATER");
     }
 
-    public void setAxe()
-    {
-        currentTool = "Axe";
-    }
-
     public void setSeed()
     {
         currentTool = "Seed";
-    }
-
-    public void setFish()
-    {
-        currentTool = "Fish";
     }
 }
