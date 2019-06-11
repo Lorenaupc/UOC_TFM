@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour {
     private Animator animator;
 
 	void Start () {
-        
+
         if (transform.localScale.x == 2)
         {
             currentState = EnemyState.idle;
@@ -117,9 +117,25 @@ public class EnemyAI : MonoBehaviour {
         }
     }
 
+    public void KnockHitWithoutDamage(Rigidbody2D hit)
+    {
+        StartCoroutine(KnockWithoutDamage(hit));
+    }
+
     public void KnockHit(Rigidbody2D hit)
     {
         StartCoroutine(Knock(hit));
+    }
+
+    private IEnumerator KnockWithoutDamage(Rigidbody2D hit)
+    {
+        if (hit != null)
+        {
+            yield return new WaitForSeconds(0.3f);
+            hit.velocity = Vector2.zero;
+            currentState = EnemyState.idle;
+            hit.velocity = Vector2.zero;
+        }
     }
 
     private IEnumerator Knock(Rigidbody2D hit)
@@ -167,6 +183,11 @@ public class EnemyAI : MonoBehaviour {
     {
         animator.SetTrigger("death");
         chaseRadious = 0;
+        BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
+        foreach(BoxCollider2D collider in colliders)
+        {
+            collider.enabled = false;
+        }
         yield return new WaitForSeconds(1f);
         Destroy(this.gameObject);
     }
