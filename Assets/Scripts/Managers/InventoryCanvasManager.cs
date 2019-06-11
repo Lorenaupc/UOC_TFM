@@ -10,8 +10,9 @@ public class InventoryCanvasManager : MonoBehaviour {
 
     void Start()
     {
-        inventoryUsed = false;
+        inventoryUsed = true;
         player = GameObject.FindGameObjectWithTag("Player");
+        activeInventoryMenu();
     }
 
     void Update()
@@ -26,9 +27,11 @@ public class InventoryCanvasManager : MonoBehaviour {
     {
         inventoryUsed = !inventoryUsed;
         if (inventoryUsed)
-        {
+        {          
             inventoryPanel.SetActive(true);
             Time.timeScale = 0f;
+            inventoryPanel.GetComponent<InventoryManager>().DeleteInventoryNullItems();
+            inventoryPanel.GetComponent<InventoryManager>().ReloadInventoryFromExternal();
         }
         else
         {

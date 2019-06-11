@@ -19,6 +19,10 @@ public class InventorySlot : MonoBehaviour {
         {
             itemImage.sprite = item.itemImage;
             itemNumber.text = "" + item.count;
+
+            //ESTO ES PARA QUE CUANDO SE CREE EL INVENTARIO SE LIMPIE LA INFORMACION DE LAS PARTIDAS ANTERIORES POR SI SE PUSO EN EL INVENTARIO
+            item.isOnUI = false;
+            item.positionOnUI = 0;
         }
     }
 
@@ -26,7 +30,7 @@ public class InventorySlot : MonoBehaviour {
     {
         if (item)
         {
-            manager.SetupDescriptionButton(item.itemDescription, item.usable, item);
+            manager.SetupDescriptionButton(item.itemDescription, item.usable, item, item.usable, item.usable);
         }
     }
 

@@ -14,6 +14,13 @@ MonoBehaviour:
   itemName: Nabo
   itemDescription: 9 semillas de nabo
   itemImage: {fileID: 21300752, guid: e36b2b7de5e0a584f84f0f2699c5de19, type: 3}
-  count: 0
+  count: 3
   unique: 0
   usable: 1
+  isOnUI: 0
+  positionOnUI: 0
+  this_event:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

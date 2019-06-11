@@ -10,19 +10,28 @@ public class InventoryManager : MonoBehaviour {
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private Text descriptionText;
     [SerializeField] private GameObject useButton;
+    [SerializeField] private GameObject putonUI;
+    [SerializeField] private GameObject numberHeld;
     public InventoryItem currentItem;
 
-    public void SetText(string description, bool buttonActive)
+    public void SetText(string description, bool buttonActive, bool uiActive, bool numberHeldActive)
     {
         descriptionText.text = description;
         if (buttonActive) useButton.SetActive(true);
         else useButton.SetActive(false);
+
+        if (uiActive) putonUI.SetActive(true);
+        else putonUI.SetActive(false);
+
+        if (numberHeldActive) numberHeld.SetActive(true);
+        else numberHeld.SetActive(false);
     }
 
     private void Start()
     {
         CreateInventory();
-        SetText("", false);
+        SetText("", false, false, false);
+        DeleteInventoryNullItems();
     }
 
     private void CreateInventory()
@@ -42,11 +51,15 @@ public class InventoryManager : MonoBehaviour {
         }
     }
 
-    public void SetupDescriptionButton(string description, bool buttonActive, InventoryItem newItem)
+    public void SetupDescriptionButton(string description, bool buttonActive, InventoryItem newItem, bool uiActive, bool numberHeldActive)
     {
         currentItem = newItem;
         descriptionText.text = description;
         useButton.SetActive(buttonActive);
+
+
+        putonUI.SetActive(uiActive);
+        numberHeld.SetActive(numberHeldActive);
     }
 
     public void UseButtonPressed()
@@ -54,28 +67,64 @@ public class InventoryManager : MonoBehaviour {
         if (currentItem) {
             currentItem.Use();
             currentItem.count--;
-            ReloadInventory();
+            ReloadInventoryFromExternal();
         }
     }
 
-    private void ReloadInventory()
+    internal void ReloadInventoryFromExternal()
     {
         InventorySlot[] slots = inventoryPanel.GetComponentsInChildren<InventorySlot>();
         foreach (InventorySlot slot in slots)
         {
-            if (slot.item == currentItem){
-                if (currentItem.count > 0)
-                {
-                    slot.Reload();
-                }
-                else
-                {
-                    playerInventory.inventory.Remove(currentItem);
-                    Destroy(slot.gameObject);
-                    SetupDescriptionButton("", false, null);
-                }
-            }  
+            if (slot.item.count == 0)
+            {
+                playerInventory.inventory.Remove(slot.item);
+                Destroy(slot.gameObject);
+            }
+            else
+            {
+                slot.Reload();
+            }
         }
     }
 
+    internal void DeleteInventoryNullItems()
+    {
+        InventorySlot[] slots = inventoryPanel.GetComponentsInChildren<InventorySlot>();
+        foreach (InventorySlot slot in slots)
+        {
+            if (slot.item.count == 0)
+            {
+                playerInventory.inventory.Remove(slot.item);
+                Destroy(slot.gameObject);
+            }
+        }
+    }
+
+    public void SetObjectOnFastUI()
+    {
+        if (!currentItem.isOnUI)
+        {
+            string a = numberHeld.GetComponent<InputField>().text;
+            int num = 4;
+            if (a != "")
+            {
+                num = int.Parse(a);
+            }
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().setNewObject(currentItem, num);
+            currentItem.isOnUI = true;
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().removeObjectFromUI(currentItem);
+            string a = numberHeld.GetComponent<InputField>().text;
+            int num = 4;
+            if (a != "")
+            {
+                num = int.Parse(a);
+            }
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().setNewObject(currentItem, num);
+            currentItem.isOnUI = true;
+        }
+    }
 }

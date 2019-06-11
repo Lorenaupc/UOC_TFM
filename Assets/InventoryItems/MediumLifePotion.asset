@@ -14,9 +14,11 @@ MonoBehaviour:
   itemName: "Poci\xF3n media"
   itemDescription: "Brebaje para recuperar un coraz\xF3n"
   itemImage: {fileID: 21300002, guid: b0450419fde914a49b94220b0f821f41, type: 3}
-  count: 10
+  count: 15
   unique: 0
   usable: 1
+  isOnUI: 0
+  positionOnUI: 0
   this_event:
     m_PersistentCalls:
       m_Calls:

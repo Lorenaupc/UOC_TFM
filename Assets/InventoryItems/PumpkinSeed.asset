@@ -17,3 +17,10 @@ MonoBehaviour:
   count: 1
   unique: 0
   usable: 1
+  isOnUI: 0
+  positionOnUI: 0
+  this_event:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
