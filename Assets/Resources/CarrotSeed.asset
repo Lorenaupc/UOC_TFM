@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: CarrotSeed
   m_EditorClassIdentifier: 
   itemName: Semillas de zanahoria
-  itemDescription: 9 semillas de zanahoria
+  itemDescription: Semillas de zanahoria
   itemImage: {fileID: 21300066, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 5
   unique: 0

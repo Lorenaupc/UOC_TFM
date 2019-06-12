@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: EggplantSeed
   m_EditorClassIdentifier: 
   itemName: Semillas de berenjena
-  itemDescription: 9 semillas de berenjena
+  itemDescription: Semillas de berenjena
   itemImage: {fileID: 21300064, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 5
   unique: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: StrawberrySeed
   m_EditorClassIdentifier: 
   itemName: Semillas de fresa
-  itemDescription: 9 semillas de fresa
+  itemDescription: Semillas de fresa
   itemImage: {fileID: 21300006, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 5
   unique: 0

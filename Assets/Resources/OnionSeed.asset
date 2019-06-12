@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: OnionSeed
   m_EditorClassIdentifier: 
   itemName: Semillas de cebolla
-  itemDescription: 9 semillas de cebolla
+  itemDescription: Semillas de cebolla
   itemImage: {fileID: 21300036, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
-  count: 5
+  count: 2
   unique: 0
   usable: 1
   isOnUI: 0

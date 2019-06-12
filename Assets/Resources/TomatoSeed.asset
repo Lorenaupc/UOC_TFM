@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: TomatoSeed
   m_EditorClassIdentifier: 
   itemName: Semillas de tomate
-  itemDescription: 9 semillas de tomate
+  itemDescription: Semillas de tomate
   itemImage: {fileID: 21300032, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 5
   unique: 0

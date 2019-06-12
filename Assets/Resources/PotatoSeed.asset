@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: PotatoSeed
   m_EditorClassIdentifier: 
   itemName: Semillas de patata
-  itemDescription: 9 semillas de patata
+  itemDescription: Semillas de patata
   itemImage: {fileID: 21300002, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 1
   unique: 0

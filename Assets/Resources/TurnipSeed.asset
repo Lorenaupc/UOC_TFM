@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: TurnipSeed
   m_EditorClassIdentifier: 
   itemName: Semillas de nabo
-  itemDescription: 9 semillas de nabo
+  itemDescription: Semillas de nabo
   itemImage: {fileID: 21300000, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 1
   unique: 0

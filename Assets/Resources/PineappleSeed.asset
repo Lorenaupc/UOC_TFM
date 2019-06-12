@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: PineappleSeed
   m_EditorClassIdentifier: 
   itemName: "Semillas de pi\xF1a"
-  itemDescription: "9 semillas de pi\xF1a"
+  itemDescription: "Semillas de pi\xF1a"
   itemImage: {fileID: 21300040, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 1
   unique: 0
