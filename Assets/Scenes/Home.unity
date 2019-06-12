@@ -5590,6 +5590,68 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+--- !u!1001 &717123127
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1997841588}
+    m_Modifications:
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 8.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211415851525446, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+        type: 2}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211415851525446, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+        type: 2}
+      propertyPath: signText
+      value: "Para conrear necesitas utilizar la hazada, despu\xE9s plantar la semilla
+        y finalmente regarla"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588629774542068, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_Name
+      value: Sign2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &717123128 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+    type: 2}
+  m_PrefabInternal: {fileID: 717123127}
 --- !u!1 &1007387593
 GameObject:
   m_ObjectHideFlags: 0
@@ -6356,11 +6418,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4745184758937310, guid: 7a51c26dc78e8754b8454a9f5bc79aaf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.22
+      value: 5.37
       objectReference: {fileID: 0}
     - target: {fileID: 4745184758937310, guid: 7a51c26dc78e8754b8454a9f5bc79aaf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.93
+      value: 3.47
       objectReference: {fileID: 0}
     - target: {fileID: 4745184758937310, guid: 7a51c26dc78e8754b8454a9f5bc79aaf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6404,7 +6466,7 @@ Prefab:
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
       propertyPath: minPosition.x
-      value: 3.45
+      value: 3.75
       objectReference: {fileID: 0}
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
@@ -6434,15 +6496,15 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1997841588}
     m_Modifications:
     - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.4529266
       objectReference: {fileID: 0}
     - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.36
+      value: 0.757751
       objectReference: {fileID: 0}
     - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6450,15 +6512,73 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
       propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211415851525446, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+        type: 2}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211415851525446, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+        type: 2}
+      propertyPath: signText
+      value: "Come hortalizas para recuperar energ\xEDa y pociones para recuperar
+        vida"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &1412077860 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1412077859}
+--- !u!1001 &1726511219
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1997841588}
+    m_Modifications:
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -6.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
       propertyPath: m_LocalRotation.w
@@ -6476,11 +6596,82 @@ Prefab:
     - target: {fileID: 114211415851525446, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
         type: 2}
       propertyPath: signText
-      value: Libro
+      value: "Saca provecho a las teclas de acceso r\xE1pido (1 al 6) "
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588629774542068, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_Name
+      value: Sign4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &1726511220 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1726511219}
+--- !u!1001 &1842054887
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1997841588}
+    m_Modifications:
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 9.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211415851525446, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+        type: 2}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211415851525446, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+        type: 2}
+      propertyPath: signText
+      value: "Pulsa la tecla i para atacar y la tecla Esc para acceder al inventario
+        y asignar teclas de acceso r\xE1pido"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588629774542068, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+      propertyPath: m_Name
+      value: Sign3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fae7d4b2ecf7774a90fbe657791eeac, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &1842054888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4577418545449782, guid: 7fae7d4b2ecf7774a90fbe657791eeac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1842054887}
 --- !u!1001 &1996812448
 Prefab:
   m_ObjectHideFlags: 0
@@ -6533,3 +6724,35 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aafebcdd8eb2a549a7106e56b93842a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1997841587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1997841588}
+  m_Layer: 0
+  m_Name: Signs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1997841588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997841587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.4529266, y: 3.6022491, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1412077860}
+  - {fileID: 717123128}
+  - {fileID: 1842054888}
+  - {fileID: 1726511220}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
