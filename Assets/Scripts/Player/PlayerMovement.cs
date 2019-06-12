@@ -12,6 +12,8 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour {
 
+    static PlayerMovement instance;
+
     public PlayerState currentState;
     private Rigidbody2D rigidbody2d;
     private readonly float velocity = 4.5f;
@@ -20,6 +22,16 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         if (PlayerPrefs.HasKey("PlayerPositionX"))
         {
             Vector3 playerPosition = Vector3.zero;

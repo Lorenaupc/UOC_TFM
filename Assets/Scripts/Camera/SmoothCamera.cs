@@ -7,11 +7,15 @@ public class SmoothCamera : MonoBehaviour {
     public Vector2 maxPosition;
     public Vector2 minPosition;
     private float smooth;
-    public Transform target;
+    private Transform target;
 
     private void Start()
     {
         smooth = 0.5f;
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
     private void LateUpdate()

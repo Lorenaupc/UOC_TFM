@@ -5,11 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
 
+    static PauseManager instance;
+
     private GameObject player;
     private bool isPaused;
     public GameObject pausePanel;
 
-	void Start () {
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start () {
         isPaused = false;
         player = GameObject.FindGameObjectWithTag("Player");
 	}

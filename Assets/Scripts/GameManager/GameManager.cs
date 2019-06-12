@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject player;
+    static GameManager instance;
+    private GameObject player;
     private GameObject canvas;
 
     public Sprite groundObject;
@@ -17,13 +18,21 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
-        DontDestroyOnLoad(player);
-        DontDestroyOnLoad(this);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
     {
         canvas = GameObject.FindGameObjectWithTag("Canvas");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()

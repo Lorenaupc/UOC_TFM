@@ -15,6 +15,7 @@ TagManager:
   - Decoration
   - Enemy
   - InventoryManager
+  - DialogBox
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Tools : MonoBehaviour {
 
+    static Tools instance;
+
     internal InventoryItem fourthItem;
     internal InventoryItem fifthItem;
     internal InventoryItem sixItem;
@@ -21,6 +23,19 @@ public class Tools : MonoBehaviour {
 
     public Image objectsix;
     public Text textsix;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
