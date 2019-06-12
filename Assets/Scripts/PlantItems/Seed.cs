@@ -79,6 +79,18 @@ public class Seed : MonoBehaviour {
         GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().inventoryManager.AddItem(itemToAdd);
     }
 
+    private void takeSeeds()
+    {
+        int x = Random.Range(0, 5);
+        if (x == 0)
+        {
+            Debug.Log("Semilla conseguida!");
+            string seed = type + "Seed";
+            InventoryItem itemToAdd = Resources.Load<InventoryItem>(seed);
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().inventoryManager.AddItem(itemToAdd);
+        }
+    }
+
     private void Update()
     {
         if (enableWater)
@@ -110,6 +122,7 @@ public class Seed : MonoBehaviour {
             transform.tag = "NormalGrass";
 
             addToInventorySeed();
+            takeSeeds();
 
             Destroy(GetComponent<Seed>());
         }
