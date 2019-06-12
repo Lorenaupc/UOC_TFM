@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Manzana
   itemDescription: Manzana
-  itemImage: {fileID: 21301720, guid: e36b2b7de5e0a584f84f0f2699c5de19, type: 3}
+  itemImage: {fileID: 21300316, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 1
   unique: 0
   usable: 1
