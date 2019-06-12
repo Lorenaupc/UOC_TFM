@@ -6,7 +6,9 @@ public class InventoryCanvasManager : MonoBehaviour {
 
     private GameObject player;
     private bool inventoryUsed;
+    private bool shopInventoryUsed;
     public GameObject inventoryPanel;
+    public GameObject shopPanel;
 
     //Private things
     private Vector2 anchorMax;
@@ -20,14 +22,19 @@ public class InventoryCanvasManager : MonoBehaviour {
         pivot = inventoryPanel.GetComponent<RectTransform>().pivot;
 
         inventoryUsed = true;
+        shopInventoryUsed = true;
         player = GameObject.FindGameObjectWithTag("Player");
         activeInventoryMenu();
+        activeShopInventoryMenu();
     }
 
     void Update()
     {
         if (Input.GetButtonDown("PanelInventory"))
         {
+            if (shopPanel.activeSelf) {
+                activeShopInventoryMenu();
+            }
             activeInventoryMenu();
         }
     }
@@ -49,6 +56,21 @@ public class InventoryCanvasManager : MonoBehaviour {
             inventoryPanel.GetComponent<RectTransform>().pivot = pivot;
 
             inventoryPanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
+    }
+
+    internal void activeShopInventoryMenu()
+    {
+        shopInventoryUsed = !shopInventoryUsed;
+        if (shopInventoryUsed)
+        {
+            shopPanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            shopPanel.SetActive(false);
             Time.timeScale = 1f;
         }
     }

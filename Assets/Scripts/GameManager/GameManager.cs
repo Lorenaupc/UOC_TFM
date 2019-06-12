@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
 
     //Inventory panel
     public GameObject inventoryPanel;
+    public GameObject shopInventoryPanel;
 
     private void Awake()
     {
@@ -123,6 +124,7 @@ public class GameManager : MonoBehaviour {
                     inventoryPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0.5f);
                     inventoryPanel.GetComponent<RectTransform>().pivot = new Vector2(0, 0.5f);
 
+                    shopInventoryPanel.transform.parent.GetComponent<InventoryCanvasManager>().activeShopInventoryMenu();
                     //sell objects
                 }
             }
