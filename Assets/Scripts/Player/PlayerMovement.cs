@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour {
         }
         else
         {
-            Debug.Log("NOT STAMINA");
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<DialogBoxManager>().RandomMessage("No tienes suficiente energía!");
         }
     }
 

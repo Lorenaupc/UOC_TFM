@@ -8,8 +8,17 @@ public class InventoryCanvasManager : MonoBehaviour {
     private bool inventoryUsed;
     public GameObject inventoryPanel;
 
+    //Private things
+    private Vector2 anchorMax;
+    private Vector2 anchorMin;
+    private Vector2 pivot;
+
     void Start()
     {
+        anchorMax = inventoryPanel.GetComponent<RectTransform>().anchorMax;
+        anchorMin = inventoryPanel.GetComponent<RectTransform>().anchorMin;
+        pivot = inventoryPanel.GetComponent<RectTransform>().pivot;
+
         inventoryUsed = true;
         player = GameObject.FindGameObjectWithTag("Player");
         activeInventoryMenu();
@@ -23,7 +32,7 @@ public class InventoryCanvasManager : MonoBehaviour {
         }
     }
 
-    private void activeInventoryMenu()
+    internal void activeInventoryMenu()
     {
         inventoryUsed = !inventoryUsed;
         if (inventoryUsed)
@@ -35,6 +44,10 @@ public class InventoryCanvasManager : MonoBehaviour {
         }
         else
         {
+            inventoryPanel.GetComponent<RectTransform>().anchorMax = anchorMax;
+            inventoryPanel.GetComponent<RectTransform>().anchorMin = anchorMin;
+            inventoryPanel.GetComponent<RectTransform>().pivot = pivot;
+
             inventoryPanel.SetActive(false);
             Time.timeScale = 1f;
         }

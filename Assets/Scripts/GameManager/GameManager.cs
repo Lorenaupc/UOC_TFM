@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour {
     public Sprite normalGrassObject;
     public Sprite grassObject;
 
+    //Inventory panel
+    public GameObject inventoryPanel;
+
     private void Awake()
     {
         if (instance == null)
@@ -51,63 +54,76 @@ public class GameManager : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null)
             {
-                if (canvas.GetComponent<Tools>().currentTool != null) {
-                    switch (canvas.GetComponent<Tools>().currentTool)
+                if (hit.collider.tag.Equals("NormalGrass") || hit.collider.tag.Equals("River") || hit.collider.tag.Equals("Ground") || hit.collider.tag.Equals("Seed"))
+                {
+                    if (canvas.GetComponent<Tools>().currentTool != null)
                     {
-                        case ("Hoe"):
-                            if (hit.collider.tag == "NormalGrass")
-                            {
-                                hit.collider.gameObject.GetComponent<SpriteRenderer>().sprite = groundObject;
-                                hit.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-                                hit.collider.gameObject.AddComponent<Ground>();
-                                hit.collider.gameObject.GetComponent<Ground>().normalGrassObject = normalGrassObject;
-                                hit.collider.tag = "Ground";
-                            }
-                            break;                       
-                        case ("Water"):
-                            if (hit.collider.tag == "Seed")
-                            {
-                                if (player.GetComponent<Water>().decreaseWaterCan())
+                        switch (canvas.GetComponent<Tools>().currentTool)
+                        {
+                            case ("Hoe"):
+                                if (hit.collider.tag == "NormalGrass")
                                 {
-                                    hit.collider.gameObject.GetComponent<Seed>().watered = true;
-                                }
-                            }
-                            else if (hit.collider.tag == "River")
-                            {
-                                player.GetComponent<Water>().fillWaterCan();
-                            }
-                            break;                      
-                        case ("Seed"):
-                            if (hit.collider.tag == "Ground")
-                            {
-                                if (sproutImage.sprite != sproutSprite)
-                                {
-                                    Destroy(hit.collider.gameObject.GetComponent<Ground>());
-
-                                    hit.collider.gameObject.GetComponent<SpriteRenderer>().sprite = seedObject;
+                                    hit.collider.gameObject.GetComponent<SpriteRenderer>().sprite = groundObject;
                                     hit.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-
-                                    hit.collider.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-
-                                    hit.collider.gameObject.AddComponent<Seed>();
-                                    hit.collider.gameObject.GetComponent<Seed>().normalGrassObject = normalGrassObject;
-                                    hit.collider.gameObject.GetComponent<Seed>().growSeed = growSeedObject;
-                                    hit.collider.gameObject.GetComponent<Seed>().wateredSeed = wateredSeedObject;
-                                    hit.collider.gameObject.GetComponent<Seed>().type = typeOfSeed();
-
-                                    hit.collider.tag = "Seed";
-
-                                    //count
-                                    GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().thirdItem.count--;
-                                    GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().updateCountItemsExternal(3);
+                                    hit.collider.gameObject.AddComponent<Ground>();
+                                    hit.collider.gameObject.GetComponent<Ground>().normalGrassObject = normalGrassObject;
+                                    hit.collider.tag = "Ground";
                                 }
-                                else
+                                break;
+                            case ("Water"):
+                                if (hit.collider.tag == "Seed")
                                 {
-                                    Debug.Log("Selecciona las semillas para plantar");
+                                    if (player.GetComponent<Water>().decreaseWaterCan())
+                                    {
+                                        hit.collider.gameObject.GetComponent<Seed>().watered = true;
+                                    }
                                 }
-                            }
-                            break;
+                                else if (hit.collider.tag == "River")
+                                {
+                                    player.GetComponent<Water>().fillWaterCan();
+                                }
+                                break;
+                            case ("Seed"):
+                                if (hit.collider.tag == "Ground")
+                                {
+                                    if (sproutImage.sprite != sproutSprite)
+                                    {
+                                        Destroy(hit.collider.gameObject.GetComponent<Ground>());
+
+                                        hit.collider.gameObject.GetComponent<SpriteRenderer>().sprite = seedObject;
+                                        hit.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+
+                                        hit.collider.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+
+                                        hit.collider.gameObject.AddComponent<Seed>();
+                                        hit.collider.gameObject.GetComponent<Seed>().normalGrassObject = normalGrassObject;
+                                        hit.collider.gameObject.GetComponent<Seed>().growSeed = growSeedObject;
+                                        hit.collider.gameObject.GetComponent<Seed>().wateredSeed = wateredSeedObject;
+                                        hit.collider.gameObject.GetComponent<Seed>().type = typeOfSeed();
+
+                                        hit.collider.tag = "Seed";
+
+                                        //count
+                                        GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().thirdItem.count--;
+                                        GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().updateCountItemsExternal(3);
+                                    }
+                                    else
+                                    {
+                                        GameObject.FindGameObjectWithTag("Canvas").GetComponent<DialogBoxManager>().RandomMessage("Selecciona las semillas para plantar");
+                                    }
+                                }
+                                break;
+                        }
                     }
+                }
+                else if (hit.collider.tag.Equals("Shops"))
+                {
+                    inventoryPanel.transform.parent.GetComponent<InventoryCanvasManager>().activeInventoryMenu();
+                    inventoryPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0.5f);
+                    inventoryPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0.5f);
+                    inventoryPanel.GetComponent<RectTransform>().pivot = new Vector2(0, 0.5f);
+
+                    //sell objects
                 }
             }
         }
