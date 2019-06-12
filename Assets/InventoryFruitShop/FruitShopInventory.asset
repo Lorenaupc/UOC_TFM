@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45edfe890fc2a94b846c953eca2c57e, type: 3}
+  m_Name: FruitShopInventory
+  m_EditorClassIdentifier: 
+  inventory:
+  - {fileID: 11400000, guid: 40424d5ecc1b99f4b92de0636b8cf9a7, type: 2}
+  - {fileID: 11400000, guid: f67fb5eb55eba7143af9a9e1b5c25cbd, type: 2}
+  - {fileID: 11400000, guid: 56839de46ddfb404fa9067659456063e, type: 2}
+  - {fileID: 11400000, guid: ad23074b6a417d44ba7b63b7cf7e586d, type: 2}
+  - {fileID: 11400000, guid: 73721130c4796654db6ab4dbdd689360, type: 2}
+  - {fileID: 11400000, guid: 4c309c690f65a194eb0d6f9b86ba8461, type: 2}
+  - {fileID: 11400000, guid: a7cc221df0d1d2d47812e5850adde908, type: 2}
+  - {fileID: 11400000, guid: a77de91b7a8003a4797678d2d1eee50d, type: 2}
+  - {fileID: 11400000, guid: 89e8482dda6cd8541bbe235d0f5d5a55, type: 2}
+  - {fileID: 11400000, guid: 9db840d2bc1827e4aaaf958de3da79b6, type: 2}

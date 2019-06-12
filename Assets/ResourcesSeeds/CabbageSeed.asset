@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1857d4f9d875949b711de5a246bdfd, type: 3}
+  m_Name: CabbageSeed
+  m_EditorClassIdentifier: 
+  itemName: Semillas de lechuga
+  itemDescription: Semillas de lechuga
+  itemImage: {fileID: 21300008, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
+  count: 1
+  unique: 0
+  usable: 1
+  isOnUI: 0
+  positionOnUI: 0
+  this_event:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

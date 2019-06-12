@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45edfe890fc2a94b846c953eca2c57e, type: 3}
+  m_Name: SeedShopInventory
+  m_EditorClassIdentifier: 
+  inventory:
+  - {fileID: 11400000, guid: 976ba85c1d005e648abc0e2c0e6ec427, type: 2}
+  - {fileID: 11400000, guid: 68ea7ca6d3ca3c54d93fdc0082e8e6ea, type: 2}
+  - {fileID: 11400000, guid: bf81cb73212aa0643a717eb125eb787b, type: 2}
+  - {fileID: 11400000, guid: 812c12aeeb1cd5646b4eafcab84bb629, type: 2}
+  - {fileID: 11400000, guid: 11813d801997be74f8c0ed09578a1bff, type: 2}
+  - {fileID: 11400000, guid: c89465ee95c90414b905899ac7f416ec, type: 2}
+  - {fileID: 11400000, guid: d9e5291d164080442846a38c046011ac, type: 2}
+  - {fileID: 11400000, guid: 87cf243c190e20a4f8bf8e6d608f3800, type: 2}
+  - {fileID: 11400000, guid: cb43e2fa55e1ac64291f834583b8ff24, type: 2}
+  - {fileID: 11400000, guid: 25dcbe08d4a32794290602c53e2ea198, type: 2}
+  - {fileID: 11400000, guid: 49a29a7f35bf1194d9f742b925ae588a, type: 2}
