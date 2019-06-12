@@ -59,11 +59,26 @@ public class InventoryManager : MonoBehaviour {
     {
         currentItem = newItem;
         descriptionText.text = description;
-        useButton.SetActive(buttonActive);
 
-
+        if (newItem != null)
+        {
+            if (newItem.name.Contains("Seed"))
+            {
+                numberHeld.SetActive(false);
+                useButton.SetActive(false);
+            }
+            else
+            {
+                useButton.SetActive(buttonActive);
+                numberHeld.SetActive(numberHeldActive);
+            }
+        }
+        else
+        {
+            useButton.SetActive(buttonActive);
+            numberHeld.SetActive(numberHeldActive);
+        }
         putonUI.SetActive(uiActive);
-        numberHeld.SetActive(numberHeldActive);
     }
 
     public void UseButtonPressed()
@@ -84,9 +99,17 @@ public class InventoryManager : MonoBehaviour {
 
     public void AddItem(InventoryItem newItem)
     {
-        string check = newItem.name.Remove(0, 4);
-        InventoryItem itemToAdd = Resources.Load<InventoryItem>(check);
+        string check = "";
+        if (newItem.name.Contains("Loot"))
+        {
+            check = newItem.name.Remove(0, 4);           
+        }
+        else
+        {
+            check = newItem.name;
+        }
 
+        InventoryItem itemToAdd = Resources.Load<InventoryItem>(check);
         int index = -1;
 
         for (int i = 0; i < playerInventory.inventory.Count; i++)
@@ -161,28 +184,44 @@ public class InventoryManager : MonoBehaviour {
 
     public void SetObjectOnFastUI()
     {
-        if (!currentItem.isOnUI)
+        //If not seeds
+        if (useButton.activeSelf)
         {
-            string a = numberHeld.GetComponent<InputField>().text;
-            int num = 4;
-            if (a != "")
+            if (!currentItem.isOnUI)
             {
-                num = int.Parse(a);
+                string a = numberHeld.GetComponent<InputField>().text;
+                int num = 4;
+                if (a != "")
+                {
+                    num = int.Parse(a);
+                }
+                GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().setNewObject(currentItem, num);
+                currentItem.isOnUI = true;
             }
-            GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().setNewObject(currentItem, num);
-            currentItem.isOnUI = true;
+            else
+            {
+                GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().removeObjectFromUI(currentItem);
+                string a = numberHeld.GetComponent<InputField>().text;
+                int num = 4;
+                if (a != "")
+                {
+                    num = int.Parse(a);
+                }
+                GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().setNewObject(currentItem, num);
+                currentItem.isOnUI = true;
+            }
         }
         else
         {
-            GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().removeObjectFromUI(currentItem);
-            string a = numberHeld.GetComponent<InputField>().text;
-            int num = 4;
-            if (a != "")
+            if (!currentItem.isOnUI)
             {
-                num = int.Parse(a);
+                GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().setNewObject(currentItem, 3);
+                currentItem.isOnUI = true;
             }
-            GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().setNewObject(currentItem, num);
-            currentItem.isOnUI = true;
+            else
+            {
+                GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().removeObjectFromUI(currentItem);
+            }
         }
     }
 }

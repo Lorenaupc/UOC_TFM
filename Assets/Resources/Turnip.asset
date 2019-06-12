@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Turnip
   m_EditorClassIdentifier: 
   itemName: Nabo
-  itemDescription: Nabo
+  itemDescription: "Nabo, recupera 10 puntos de energ\xEDa"
   itemImage: {fileID: 21300214, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 1
   unique: 0

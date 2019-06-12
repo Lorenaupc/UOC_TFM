@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    //Singleton
     static GameManager instance;
+
     private GameObject player;
     private GameObject canvas;
+
+    public Image sproutImage; 
+    public Sprite sproutSprite; 
 
     public Sprite groundObject;
     public Sprite seedObject;
@@ -74,24 +80,89 @@ public class GameManager : MonoBehaviour {
                         case ("Seed"):
                             if (hit.collider.tag == "Ground")
                             {
-                                Destroy(hit.collider.gameObject.GetComponent<Ground>());
+                                if (sproutImage.sprite != sproutSprite)
+                                {
+                                    Destroy(hit.collider.gameObject.GetComponent<Ground>());
 
-                                hit.collider.gameObject.GetComponent<SpriteRenderer>().sprite = seedObject;
-                                hit.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                                    hit.collider.gameObject.GetComponent<SpriteRenderer>().sprite = seedObject;
+                                    hit.collider.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
-                                hit.collider.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+                                    hit.collider.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
 
-                                hit.collider.gameObject.AddComponent<Seed>();
-                                hit.collider.gameObject.GetComponent<Seed>().normalGrassObject = normalGrassObject;
-                                hit.collider.gameObject.GetComponent<Seed>().growSeed = growSeedObject;
-                                hit.collider.gameObject.GetComponent<Seed>().wateredSeed = wateredSeedObject;
+                                    hit.collider.gameObject.AddComponent<Seed>();
+                                    hit.collider.gameObject.GetComponent<Seed>().normalGrassObject = normalGrassObject;
+                                    hit.collider.gameObject.GetComponent<Seed>().growSeed = growSeedObject;
+                                    hit.collider.gameObject.GetComponent<Seed>().wateredSeed = wateredSeedObject;
+                                    hit.collider.gameObject.GetComponent<Seed>().type = typeOfSeed();
 
-                                hit.collider.tag = "Seed";
+                                    hit.collider.tag = "Seed";
+
+                                    //count
+                                    GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().thirdItem.count--;
+                                    GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().updateCountItemsExternal(3);
+                                }
+                                else
+                                {
+                                    Debug.Log("Selecciona las semillas para plantar");
+                                }
                             }
                             break;
                     }
                 }
             }
         }
+    }
+
+    private string typeOfSeed()
+    {
+        string result = "";
+
+        InventoryItem itemSeed = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().thirdItem;
+        if (itemSeed.itemName.Contains("lechuga"))
+        {
+            result = "Cabbage";
+        }
+        else if (itemSeed.itemName.Contains("zanahoria"))
+        {
+            result = "Carrot";
+        }
+        else if (itemSeed.itemName.Contains("pepino"))
+        {
+            result = "Cucumber";
+        }
+        else if (itemSeed.itemName.Contains("berenjena"))
+        {
+            result = "Eggplant";
+        }
+        else if (itemSeed.itemName.Contains("cebolla"))
+        {
+            result = "Onion";
+        }
+        else if (itemSeed.itemName.Contains("piña"))
+        {
+            result = "Pineapple";
+        }
+        else if (itemSeed.itemName.Contains("patata"))
+        {
+            result = "Potato";
+        }
+        else if (itemSeed.itemName.Contains("calabaza"))
+        {
+            result = "Pumpkin";
+        }
+        else if (itemSeed.itemName.Contains("fresa"))
+        {
+            result = "Strawberry";
+        }
+        else if (itemSeed.itemName.Contains("tomate"))
+        {
+            result = "Tomato";
+        }
+        else if (itemSeed.itemName.Contains("nabo"))
+        {
+            result = "Turnip";
+        }
+
+        return result;
     }
 }

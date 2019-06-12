@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Pineapple
   m_EditorClassIdentifier: 
   itemName: "Pi\xF1a"
-  itemDescription: "Pi\xF1a"
+  itemDescription: "Pi\xF1a, recupera 25 puntos de energ\xEDa"
   itemImage: {fileID: 21300254, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 1
   unique: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 25
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

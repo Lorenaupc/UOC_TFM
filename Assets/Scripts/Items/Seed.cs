@@ -8,6 +8,8 @@ public class Seed : MonoBehaviour {
     internal Sprite wateredSeed;
     internal Sprite growSeed;
 
+    internal string type;
+
     internal bool watered;
     private bool growed;
 
@@ -17,10 +19,64 @@ public class Seed : MonoBehaviour {
 
     void Start()
     {
-        time = 10;
         watered = false;
         growed = false;
         enableWater = true;
+        
+        typeOfSeed();
+    }
+
+    private void typeOfSeed()
+    {
+        if (type.Equals("Cabbage")){
+            time = 300;
+        }
+        else if (type.Equals("Carrot"))
+        {
+            time = 300;
+        }
+        else if (type.Equals("Cucumber"))
+        {
+            time = 420;
+        }
+        else if (type.Equals("Eggplant"))
+        {
+            time = 420;
+        }
+        else if (type.Equals("Onion"))
+        {
+            time = 180;
+        }
+        else if (type.Equals("Pineapple"))
+        {
+            time = 600;
+        }
+        else if (type.Equals("Potato"))
+        {
+            time = 420;
+        }
+        else if (type.Equals("Pumpkin"))
+        {
+            time = 600;
+        }
+        else if (type.Equals("Strawberry"))
+        {
+            time = 180;
+        }
+        else if (type.Equals("Tomato"))
+        {
+            time = 420;
+        }
+        else if (type.Equals("Turnip"))
+        {
+            time = 300;
+        }
+    }
+
+    private void addToInventorySeed()
+    {        
+        InventoryItem itemToAdd = Resources.Load<InventoryItem>(type);
+        GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().inventoryManager.AddItem(itemToAdd);
     }
 
     private void Update()
@@ -52,6 +108,9 @@ public class Seed : MonoBehaviour {
             GetComponent<SpriteRenderer>().sortingOrder = 0;
             GetComponent<BoxCollider2D>().isTrigger = true;
             transform.tag = "NormalGrass";
+
+            addToInventorySeed();
+
             Destroy(GetComponent<Seed>());
         }
     }

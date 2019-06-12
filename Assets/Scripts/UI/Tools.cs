@@ -7,6 +7,7 @@ public class Tools : MonoBehaviour {
 
     static Tools instance;
 
+    internal InventoryItem thirdItem;
     internal InventoryItem fourthItem;
     internal InventoryItem fifthItem;
     internal InventoryItem sixItem;
@@ -14,6 +15,9 @@ public class Tools : MonoBehaviour {
     internal InventoryManager inventoryManager;
 
     internal string currentTool;
+
+    public Image objectthird;
+    public Text textthird;
 
     public Image objectfour;
     public Text textfour;
@@ -45,6 +49,7 @@ public class Tools : MonoBehaviour {
         objectfive.enabled = false;
         objectsix.enabled = false;
 
+        textthird.enabled = false;
         textfour.enabled = false;
         textfive.enabled = false;
         textsix.enabled = false;
@@ -72,6 +77,22 @@ public class Tools : MonoBehaviour {
     {
         switch (position)
         {
+            case 3:
+
+                if (thirdItem != null)
+                {
+                    thirdItem.isOnUI = false;
+                    thirdItem.positionOnUI = 0;
+                }
+
+                thirdItem = newItem;
+                objectthird.sprite = thirdItem.itemImage;
+                textthird.text = thirdItem.count.ToString();
+                newItem.positionOnUI = 3;
+
+                textthird.enabled = true;
+
+                break;
             case 4:
 
                 if (fourthItem != null)
@@ -129,7 +150,24 @@ public class Tools : MonoBehaviour {
     public void removeObjectFromUI(InventoryItem item)
     {
         bool finished = false;
-        if (fourthItem != null)
+
+        if (thirdItem != null)
+        {
+            if (thirdItem.Equals(item))
+            {
+                objectthird.sprite = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().sproutSprite;
+                textthird.text = "";
+                thirdItem = null;
+                item.positionOnUI = 0;
+                item.isOnUI = false;
+
+                textthird.enabled = false;
+
+                finished = true;
+            }
+        }
+
+        if (fourthItem != null && !finished)
         {
             if (fourthItem.Equals(item))
             {
@@ -181,6 +219,20 @@ public class Tools : MonoBehaviour {
     {
         switch (position)
         {
+            case 3:
+                textthird.text = thirdItem.count.ToString();
+                if (thirdItem.count == 0)
+                {
+                    objectthird.sprite = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().sproutSprite;
+                    textthird.text = "";
+                    thirdItem.positionOnUI = 0;
+                    thirdItem.isOnUI = false;
+
+                    textthird.enabled = false;
+                    thirdItem = null;
+                }
+                break;
+
             case 4:
                 textfour.text = fourthItem.count.ToString();
                 if (fourthItem.count == 0)
