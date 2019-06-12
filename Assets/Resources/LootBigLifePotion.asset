@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1857d4f9d875949b711de5a246bdfd, type: 3}
+  m_Name: LootBigLifePotion
+  m_EditorClassIdentifier: 
+  itemName: "Poci\xF3n grande"
+  itemDescription: Brebaje para recuperar tres corazones
+  itemImage: {fileID: 21300006, guid: b0450419fde914a49b94220b0f821f41, type: 3}
+  count: 1
+  unique: 0
+  usable: 1
+  isOnUI: 0
+  positionOnUI: 0
+  this_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114100942742720842, guid: ee055869b1984be4db9a1927c0e6cf83,
+          type: 2}
+        m_MethodName: UseHealthPotion
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

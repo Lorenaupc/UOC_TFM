@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum EnemyState
 {
@@ -24,6 +25,9 @@ public class EnemyAI : MonoBehaviour {
     private Rigidbody2D rb2d;
 
     private Animator animator;
+
+    public List<InventoryItem> lootableObjects;
+    public GameObject lootedPrefab;
 
 	void Start () {
 
@@ -189,7 +193,38 @@ public class EnemyAI : MonoBehaviour {
             collider.enabled = false;
         }
         yield return new WaitForSeconds(1f);
+
+        //Loot object
+        LootObject();
         Destroy(this.gameObject);
+    }
+
+    private void LootObject()
+    {
+        if (transform.localScale.x == 1)
+        {
+            int x = Random.Range(0, lootableObjects.Count);
+            GameObject prefab = Instantiate(lootedPrefab, transform.position, Quaternion.identity);
+            prefab.GetComponent<SpriteRenderer>().sprite = lootableObjects[x].itemImage;
+            prefab.GetComponent<LootCollider>().item = lootableObjects[x];
+            prefab.GetComponent<LootCollider>().item.count = 1;
+        }
+        else if (transform.localScale.x == 2)
+        {
+            int x = Random.Range(0, lootableObjects.Count);
+            GameObject prefab = Instantiate(lootedPrefab, transform.position, Quaternion.identity);
+            prefab.GetComponent<SpriteRenderer>().sprite = lootableObjects[x].itemImage;
+            prefab.GetComponent<LootCollider>().item = lootableObjects[x];
+            prefab.GetComponent<LootCollider>().item.count = 1;
+        }
+        else if (transform.localScale.x == 7)
+        {
+            //FALTA PONER UNA LLAVE LOOTEABLE
+            int x = Random.Range(0, lootableObjects.Count);
+            GameObject prefab = Instantiate(lootedPrefab, transform.position, Quaternion.identity);
+            prefab.GetComponent<SpriteRenderer>().sprite = lootableObjects[x].itemImage;
+            prefab.GetComponent<LootCollider>().item = lootableObjects[x];
+        }
     }
 
 }

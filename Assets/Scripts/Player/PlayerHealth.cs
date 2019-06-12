@@ -33,6 +33,30 @@ public class PlayerHealth : MonoBehaviour {
     {
         switch (amount)
         {
+            case 3:
+                if (health < maximumHealth)
+                {
+                    health+=amount;
+                    if (health >= maximumHealth)
+                    {
+                        health = maximumHealth;
+                        hearts.color = orange;
+                    }
+                    hearts.text = "x" + health;
+                }
+                break;
+            case 2:
+                if (health < maximumHealth)
+                {
+                    health += amount;
+                    if (health >= maximumHealth)
+                    {
+                        health = maximumHealth;
+                        hearts.color = orange;
+                    }
+                    hearts.text = "x" + health;
+                }
+                break;
             case 1:
                 if (health < maximumHealth)
                 {

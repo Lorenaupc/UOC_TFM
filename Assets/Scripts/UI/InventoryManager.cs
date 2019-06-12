@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -77,6 +78,47 @@ public class InventoryManager : MonoBehaviour {
                 {
                     mainCanvas.updateCountItemsExternal(currentItem.positionOnUI);
                 }
+            }
+        }
+    }
+
+    public void AddItem(InventoryItem newItem)
+    {
+        string check = newItem.name.Remove(0, 4);
+        InventoryItem itemToAdd = Resources.Load<InventoryItem>(check);
+
+        int index = -1;
+
+        for (int i = 0; i < playerInventory.inventory.Count; i++)
+        {
+            if (playerInventory.inventory[i].name == check)
+            {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1)
+        {
+            playerInventory.inventory[index].count++;
+            if (playerInventory.inventory[index].isOnUI)
+            {
+                mainCanvas.updateCountItemsExternal(playerInventory.inventory[index].positionOnUI);
+            }
+        }
+        else
+        {
+            if (itemToAdd.count.Equals(0))
+            {
+                itemToAdd.count++;
+            }
+            playerInventory.inventory.Add(itemToAdd);
+
+            GameObject instantiatedSlot = Instantiate(blankSlot, inventoryPanel.transform.position, Quaternion.identity);
+            instantiatedSlot.transform.SetParent(inventoryPanel.transform);
+            InventorySlot newSlot = instantiatedSlot.GetComponent<InventorySlot>();
+            if (newSlot)
+            {
+                newSlot.Setup(playerInventory.inventory[playerInventory.inventory.Count-1], this);
             }
         }
     }

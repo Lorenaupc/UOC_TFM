@@ -157,6 +157,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  lootableObjects:
+  - {fileID: 11400000, guid: 595755a124b6bc04bbb8dd7cc412361d, type: 2}
+  - {fileID: 11400000, guid: 8cfa3c190f7aa5c4cbad224168762657, type: 2}
+  lootedPrefab: {fileID: 1364626597928646, guid: 3e084168303e1ce40b5ce0349b979c7d,
+    type: 2}
 --- !u!212 &212610968897275126
 SpriteRenderer:
   m_ObjectHideFlags: 1
