@@ -27,8 +27,6 @@ public class PlayerAttack : MonoBehaviour {
 
                         hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
                         collision.GetComponent<EnemyAI>().KnockHit(hit);
-
-                        Debug.Log("Player");
                     }
                     else
                     {
@@ -38,7 +36,6 @@ public class PlayerAttack : MonoBehaviour {
 
                         hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
                         collision.GetComponent<EnemyAI>().KnockHitWithoutDamage(hit);
-                        Debug.Log("Enemy");
                     }
                 }
 
