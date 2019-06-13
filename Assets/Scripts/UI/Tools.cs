@@ -13,6 +13,7 @@ public class Tools : MonoBehaviour {
     internal InventoryItem sixItem;
 
     internal InventoryManager inventoryManager;
+    public GameObject inventoriesManager;
 
     internal string currentTool;
 
@@ -54,7 +55,7 @@ public class Tools : MonoBehaviour {
         textfive.enabled = false;
         textsix.enabled = false;
 
-        inventoryManager = GameObject.FindGameObjectWithTag("InventoryManager").GetComponent<InventoryManager>();
+        inventoryManager = inventoriesManager.GetComponent<InventoryCanvasManager>().inventoryPanel.GetComponent<InventoryManager>();
     }
 
     public void setHoe()

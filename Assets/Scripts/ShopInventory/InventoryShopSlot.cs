@@ -24,7 +24,7 @@ public class InventoryShopSlot : MonoBehaviour {
     {
         if (item)
         {
-            manager.SetupDescriptionButton(item.itemDescription);
+            manager.SetupDescriptionButton(item.itemDescription, item);
         }
     }
 }

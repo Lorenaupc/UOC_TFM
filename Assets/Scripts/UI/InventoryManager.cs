@@ -144,6 +144,7 @@ public class InventoryManager : MonoBehaviour {
                 newSlot.Setup(playerInventory.inventory[playerInventory.inventory.Count-1], this);
             }
         }
+        ReloadInventoryFromExternal();
     }
 
     internal void ReloadInventoryFromExternal()
@@ -222,6 +223,34 @@ public class InventoryManager : MonoBehaviour {
             {
                 GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().removeObjectFromUI(currentItem);
             }
+        }
+    }
+
+    internal void SellItems(InventoryItem item)
+    {
+        int index = -1;
+
+        for (int i = 0; i < playerInventory.inventory.Count; i++)
+        {
+            if (playerInventory.inventory[i].name == item.name)
+            {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1)
+        {
+            playerInventory.inventory[index].count--;
+            if (playerInventory.inventory[index].count == 0)
+            {
+                GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().removeObjectFromUI(playerInventory.inventory[index]);
+                DeleteInventoryNullItems();
+            }
+            else if (playerInventory.inventory[index].isOnUI)
+            {
+                mainCanvas.updateCountItemsExternal(playerInventory.inventory[index].positionOnUI);
+            }
+            ReloadInventoryFromExternal();
         }
     }
 }

@@ -11,8 +11,6 @@ public class InventoryShopManager : MonoBehaviour {
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private Text descriptionText;
     public InventoryItem currentItem;
-    public Button sell;
-    public Button buy;
 
     public void SetText(string description)
     {
@@ -42,10 +40,37 @@ public class InventoryShopManager : MonoBehaviour {
         }
     }
 
-    public void SetupDescriptionButton(string description)
+    public void SetupDescriptionButton(string description, InventoryItem newItem)
     {
+        currentItem = newItem;
         descriptionText.text = description;
     }
 
-    //faltan los botones de vender y comprar
+    /*internal InventoryItem BuyItems(InventoryItem item)
+    {
+        int index = -1;
+
+        for (int i = 0; i < playerInventory.inventory.Count; i++)
+        {
+            if (playerInventory.inventory[i].name == item.name)
+            {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1)
+        {
+            playerInventory.inventory[index].count--;
+            if (playerInventory.inventory[index].count == 0)
+            {
+                GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().removeObjectFromUI(playerInventory.inventory[index]);
+                DeleteInventoryNullItems();
+            }
+            else if (playerInventory.inventory[index].isOnUI)
+            {
+                mainCanvas.updateCountItemsExternal(playerInventory.inventory[index].positionOnUI);
+            }
+            ReloadInventoryFromExternal();
+        }
+    }*/
 }

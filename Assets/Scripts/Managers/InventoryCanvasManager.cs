@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryCanvasManager : MonoBehaviour {
 
@@ -14,6 +15,9 @@ public class InventoryCanvasManager : MonoBehaviour {
     private Vector2 anchorMax;
     private Vector2 anchorMin;
     private Vector2 pivot;
+
+    public Button sell;
+    public Button buy;
 
     void Start()
     {
@@ -66,12 +70,27 @@ public class InventoryCanvasManager : MonoBehaviour {
         if (shopInventoryUsed)
         {
             shopPanel.SetActive(true);
+            sell.enabled = true;
+            buy.enabled = true;
             Time.timeScale = 0f;
         }
         else
         {
             shopPanel.SetActive(false);
+            sell.enabled = false;
+            buy.enabled = false;
             Time.timeScale = 1f;
         }
+    }
+
+    public void SellButton()
+    {
+        inventoryPanel.GetComponent<InventoryManager>().SellItems(inventoryPanel.GetComponent<InventoryManager>().currentItem);
+    }
+
+    public void BuyButton()
+    {
+        InventoryItem itemToBuy = shopPanel.GetComponent<InventoryShopManager>().currentItem;
+        inventoryPanel.GetComponent<InventoryManager>().AddItem(itemToBuy);
     }
 }
