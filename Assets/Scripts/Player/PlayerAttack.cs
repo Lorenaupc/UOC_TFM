@@ -26,9 +26,9 @@ public class PlayerAttack : MonoBehaviour {
                         hit.AddForce(difference, ForceMode2D.Impulse);
 
                         hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
-                        collision.GetComponent<EnemyAI>().KnockHit(hit);
+                        collision.GetComponent<EnemyAI>().KnockHit(hit, GetComponent<PlayerHealth>().attackPower);
                     }
-                    else
+                    else if (transform.tag.Equals("Enemy"))
                     {
                         Vector2 difference = hit.transform.position - transform.position;
                         difference = difference.normalized * 1;
@@ -36,6 +36,15 @@ public class PlayerAttack : MonoBehaviour {
 
                         hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
                         collision.GetComponent<EnemyAI>().KnockHitWithoutDamage(hit);
+                    }
+                    else if (transform.tag.Equals("Canon"))
+                    {
+                        Vector2 difference = hit.transform.position - transform.position;
+                        difference = difference.normalized * 1;
+                        hit.AddForce(difference, ForceMode2D.Impulse);
+
+                        hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
+                        collision.GetComponent<EnemyAI>().KnockHit(hit, GetComponent<CanonProjectile>().attackPower);
                     }
                 }
 

@@ -126,9 +126,9 @@ public class EnemyAI : MonoBehaviour {
         StartCoroutine(KnockWithoutDamage(hit));
     }
 
-    public void KnockHit(Rigidbody2D hit)
+    public void KnockHit(Rigidbody2D hit, int attackPower)
     {
-        StartCoroutine(Knock(hit));
+        StartCoroutine(Knock(hit, attackPower));
     }
 
     private IEnumerator KnockWithoutDamage(Rigidbody2D hit)
@@ -142,7 +142,7 @@ public class EnemyAI : MonoBehaviour {
         }
     }
 
-    private IEnumerator Knock(Rigidbody2D hit)
+    private IEnumerator Knock(Rigidbody2D hit, int attackPower)
     {
         if (hit != null)
         {
@@ -151,7 +151,7 @@ public class EnemyAI : MonoBehaviour {
             currentState = EnemyState.idle;
             hit.velocity = Vector2.zero;
 
-            decreaseHealth(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().attackPower);
+            decreaseHealth(attackPower);
         }
     }
 
