@@ -42,8 +42,16 @@ public class PlayerAttack : MonoBehaviour {
                         difference = difference.normalized * 1;
                         hit.AddForce(difference, ForceMode2D.Impulse);
 
-                        hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
-                        collision.GetComponent<EnemyAI>().KnockHitWithoutDamage(hit);
+                        if (hit.name.Contains("Goblin"))
+                        {
+                            hit.GetComponent<GoblinEnemyAI>().currentState = GoblinEnemyState.stagger;
+                            collision.GetComponent<GoblinEnemyAI>().KnockHitWithoutDamage(hit);
+                        }
+                        else
+                        {
+                            hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
+                            collision.GetComponent<EnemyAI>().KnockHitWithoutDamage(hit);
+                        }
                     }
                     else if (transform.tag.Equals("Canon"))
                     {
@@ -51,8 +59,16 @@ public class PlayerAttack : MonoBehaviour {
                         difference = difference.normalized * 1;
                         hit.AddForce(difference, ForceMode2D.Impulse);
 
-                        hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
-                        collision.GetComponent<EnemyAI>().KnockHit(hit, GetComponent<CanonProjectile>().attackPower);
+                        if (hit.name.Contains("Goblin"))
+                        {
+                            hit.GetComponent<GoblinEnemyAI>().currentState = GoblinEnemyState.stagger;
+                            collision.GetComponent<GoblinEnemyAI>().KnockHit(hit, GetComponent<CanonProjectile>().attackPower);
+                        }
+                        else
+                        {
+                            hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
+                            collision.GetComponent<EnemyAI>().KnockHit(hit, GetComponent<CanonProjectile>().attackPower);
+                        }
                     }
                 }
 
