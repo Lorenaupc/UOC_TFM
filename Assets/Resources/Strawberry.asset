@@ -19,6 +19,8 @@ MonoBehaviour:
   usable: 1
   isOnUI: 0
   positionOnUI: 0
+  sell_cost: 1
+  buy_cost: 0
   this_event:
     m_PersistentCalls:
       m_Calls:

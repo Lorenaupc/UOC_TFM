@@ -16,6 +16,9 @@ public class InventoryItem : ScriptableObject {
     public bool isOnUI = false;
     public int positionOnUI;
 
+    public int sell_cost;
+    public int buy_cost;
+
     public UnityEvent this_event;
 
     public void Use()

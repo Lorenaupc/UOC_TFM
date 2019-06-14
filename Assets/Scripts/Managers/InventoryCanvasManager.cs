@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class InventoryCanvasManager : MonoBehaviour {
 
     private GameObject player;
-    private bool inventoryUsed;
-    private bool shopInventoryUsed;
+    internal bool inventoryUsed;
+    internal bool shopInventoryUsed;
     public GameObject inventoryPanel;
     public GameObject shopPanel;
 
@@ -85,12 +85,21 @@ public class InventoryCanvasManager : MonoBehaviour {
 
     public void SellButton()
     {
+        int money = inventoryPanel.GetComponent<InventoryManager>().currentItem.sell_cost;
         inventoryPanel.GetComponent<InventoryManager>().SellItems(inventoryPanel.GetComponent<InventoryManager>().currentItem);
+        player.GetComponent<PlayerMovement>().playerMoney += money;
+        player.GetComponent<PlayerMovement>().UpdatePlayerMoney();
     }
 
     public void BuyButton()
     {
         InventoryItem itemToBuy = shopPanel.GetComponent<InventoryShopManager>().currentItem;
-        inventoryPanel.GetComponent<InventoryManager>().AddItem(itemToBuy);
+        int money = player.GetComponent<PlayerMovement>().playerMoney - itemToBuy.buy_cost;
+        if (money >= 0)
+        {
+            inventoryPanel.GetComponent<InventoryManager>().AddItem(itemToBuy);
+            player.GetComponent<PlayerMovement>().playerMoney -= itemToBuy.buy_cost;
+            player.GetComponent<PlayerMovement>().UpdatePlayerMoney();
+        }
     }
 }

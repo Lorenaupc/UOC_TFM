@@ -24,7 +24,7 @@ public class InventoryShopSlot : MonoBehaviour {
     {
         if (item)
         {
-            manager.SetupDescriptionButton(item.itemDescription, item);
+            manager.SetupDescriptionButton(item.itemDescription + "\n Coste de compra: " + item.buy_cost + "z", item);
         }
     }
 }

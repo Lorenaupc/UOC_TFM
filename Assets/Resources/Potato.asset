@@ -14,11 +14,13 @@ MonoBehaviour:
   itemName: Patata
   itemDescription: "Patata, recupera 15 puntos de energ\xEDa"
   itemImage: {fileID: 21300216, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
-  count: 1
+  count: 6
   unique: 0
   usable: 1
   isOnUI: 0
   positionOnUI: 0
+  sell_cost: 4
+  buy_cost: 0
   this_event:
     m_PersistentCalls:
       m_Calls:

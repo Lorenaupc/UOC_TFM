@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour {
     private readonly float velocity = 4.5f;
     internal Animator animator;
     private Vector3 change;
+    internal int playerMoney;
+    public Text moneyText;
 
     private void Awake()
     {
@@ -50,6 +52,21 @@ public class PlayerMovement : MonoBehaviour {
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentState = PlayerState.walking;
+        playerMoney = 50;
+        UpdatePlayerMoney();        
+    }
+
+    internal void UpdatePlayerMoney()
+    {
+        moneyText.text = playerMoney + "z";
+        if (playerMoney <= 0)
+        {
+            moneyText.color = Color.red;
+        }
+        else
+        {
+            moneyText.color = Color.black;
+        }
     }
 
     private void Update()
