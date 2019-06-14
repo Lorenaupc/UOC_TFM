@@ -15,10 +15,13 @@ public class Oleadas : MonoBehaviour {
     private CircleCollider2D triggerCollider;
     public Text oleadaText;
 
+    internal bool activada;
+
     bool once = true;
 
     private void Start()
     {
+        activada = false;
         timeLeft = repeatTime+1;
         triggerCollider = GetComponent<CircleCollider2D>();
         oleadaText.enabled = false;
@@ -42,6 +45,7 @@ public class Oleadas : MonoBehaviour {
             foreach (GameObject fence in fences)
             {
                 fence.SetActive(false);
+                activada = false;
             }
             //activate shop
             if (once)
@@ -77,6 +81,7 @@ public class Oleadas : MonoBehaviour {
     private void createOleada()
     {
         Destroy(GetComponent<CircleCollider2D>());
+        activada = true;
         foreach (GameObject fence in fences)
         {
             fence.SetActive(true);

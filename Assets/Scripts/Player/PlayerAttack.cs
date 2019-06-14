@@ -25,8 +25,16 @@ public class PlayerAttack : MonoBehaviour {
                         difference = difference.normalized * thrust;
                         hit.AddForce(difference, ForceMode2D.Impulse);
 
-                        hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
-                        collision.GetComponent<EnemyAI>().KnockHit(hit, GetComponent<PlayerHealth>().attackPower);
+                        if (hit.name.Contains("Goblin"))
+                        {
+                            hit.GetComponent<GoblinEnemyAI>().currentState = GoblinEnemyState.stagger;
+                            collision.GetComponent<GoblinEnemyAI>().KnockHit(hit, transform.GetComponentInParent<PlayerHealth>().attackPower);
+                        }
+                        else
+                        {
+                            hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
+                            collision.GetComponent<EnemyAI>().KnockHit(hit, transform.GetComponentInParent<PlayerHealth>().attackPower);
+                        }
                     }
                     else if (transform.tag.Equals("Enemy"))
                     {

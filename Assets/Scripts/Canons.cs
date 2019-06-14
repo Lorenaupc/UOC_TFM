@@ -6,12 +6,15 @@ public class Canons : MonoBehaviour {
 
     public GameObject projectilePrefab;
     public Vector2 speed;
+    public GameObject oleadaActivada;
 
-	void Start () {
-        InvokeRepeating("ShootProjectiles", 0, 5);
-	}
-	
 	void Update () {
+
+        if (oleadaActivada.GetComponent<Oleadas>().activada && !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().died)
+        {
+            InvokeRepeating("ShootProjectiles", 0, 5);
+        }
+
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().died)
         {
             CancelInvoke();
