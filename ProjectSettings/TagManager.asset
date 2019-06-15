@@ -18,6 +18,7 @@ TagManager:
   - DialogBox
   - GameManager
   - Shops
+  - Projectile
   layers:
   - Default
   - TransparentFX

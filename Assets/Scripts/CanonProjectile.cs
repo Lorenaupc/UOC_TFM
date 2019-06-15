@@ -34,7 +34,7 @@ public class CanonProjectile : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player") || collision.tag.Equals("Enemy"))
+        if (collision.tag.Equals("Player") || collision.name.Equals("Boss"))
         {
             Destroy(this.gameObject);
         }

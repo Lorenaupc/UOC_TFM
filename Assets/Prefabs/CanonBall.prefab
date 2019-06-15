@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114676313878309270}
   m_Layer: 0
   m_Name: CanonBall
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  direction: {x: 0, y: 0}
   lifeTime: 5
 --- !u!212 &212221287468324598
 SpriteRenderer:

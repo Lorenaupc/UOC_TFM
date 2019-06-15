@@ -44,14 +44,14 @@ public class GoblinEnemyAI : MonoBehaviour{
             currentState = GoblinEnemyState.patrol;
             animator = GetComponent<Animator>();
             target = GameObject.FindGameObjectWithTag("Player").transform;
-            health = 5;
+            health = 30;
             attackHit = 2;
-            speed = 2f;
+            speed = 1f;
 
             rb2d = GetComponent<Rigidbody2D>();
 
-            chaseRadious = 8;
-            attackRadious = 0.1f;
+            chaseRadious = 30;
+            attackRadious = 4f;
         }
         else if (transform.localScale.x == 0.5f)
         {
@@ -65,20 +65,6 @@ public class GoblinEnemyAI : MonoBehaviour{
             rb2d = GetComponent<Rigidbody2D>();
 
             chaseRadious = 10;
-            attackRadious = 0.5f;
-        }
-        else if (transform.localScale.x == 7)
-        {
-            currentState = GoblinEnemyState.patrol;
-            animator = GetComponent<Animator>();
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-            health = 100;
-            attackHit = 3;
-            speed = 1f;
-
-            rb2d = GetComponent<Rigidbody2D>();
-
-            chaseRadious = 20;
             attackRadious = 1f;
         }
     }
@@ -99,8 +85,13 @@ public class GoblinEnemyAI : MonoBehaviour{
                     Vector3 temp = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
                     rb2d.MovePosition(temp);
                     SetAnimatorsFloats(temp - transform.position);
-                    changeState(GoblinEnemyState.patrol);
-                }
+                    currentState = GoblinEnemyState.patrol;
+                }                
+            }
+            else if (Vector3.Distance(target.position, transform.position) <= attackRadious)
+            {
+                rb2d.velocity = Vector2.zero;
+                StartCoroutine(Attack());
             }
             else if (Vector3.Distance(target.position, transform.position) > chaseRadious && !deadGoblin)
             {
@@ -113,13 +104,22 @@ public class GoblinEnemyAI : MonoBehaviour{
                 {
                     currentPoint = 0;
                 }
-
+                
                 Vector3 temp = Vector3.MoveTowards(transform.position, points[currentPoint].position, speed * Time.deltaTime);
                 rb2d.MovePosition(temp);
                 SetAnimatorsFloats(temp - transform.position);
                 changeState(GoblinEnemyState.patrol);
             }
         }
+    }
+
+    public IEnumerator Attack()
+    {
+        changeState(GoblinEnemyState.attack);
+        animator.SetBool("attack", true);
+        yield return new WaitForSeconds(0.9f);
+        animator.SetBool("attack", false);
+        changeState(GoblinEnemyState.patrol);
     }
 
     private void SetAnimatorsFloats(Vector2 direction)
@@ -151,10 +151,11 @@ public class GoblinEnemyAI : MonoBehaviour{
     {
         if (hit != null)
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
             hit.velocity = Vector2.zero;
+
+            yield return new WaitForSeconds(0.2f);
             currentState = GoblinEnemyState.patrol;
-            hit.velocity = Vector2.zero;
         }
     }
 
@@ -162,12 +163,13 @@ public class GoblinEnemyAI : MonoBehaviour{
     {
         if (hit != null)
         {
-            yield return new WaitForSeconds(0.3f);
-            hit.velocity = Vector2.zero;
-            currentState = GoblinEnemyState.patrol;
+            decreaseHealth(attackPower);
+
+            yield return new WaitForSeconds(0.2f);
             hit.velocity = Vector2.zero;
 
-            decreaseHealth(attackPower);
+            yield return new WaitForSeconds(0.2f);
+            currentState = GoblinEnemyState.patrol;
         }
     }
 
@@ -233,14 +235,6 @@ public class GoblinEnemyAI : MonoBehaviour{
             prefab.GetComponent<SpriteRenderer>().sprite = lootableObjects[x].itemImage;
             prefab.GetComponent<LootCollider>().item = lootableObjects[x];
             prefab.GetComponent<LootCollider>().item.count = 1;
-        }
-        else if (transform.localScale.x == 7)
-        {
-            //FALTA PONER UNA LLAVE LOOTEABLE
-            int x = Random.Range(0, lootableObjects.Count);
-            GameObject prefab = Instantiate(lootedPrefab, transform.position, Quaternion.identity);
-            prefab.GetComponent<SpriteRenderer>().sprite = lootableObjects[x].itemImage;
-            prefab.GetComponent<LootCollider>().item = lootableObjects[x];
         }
     }
 
