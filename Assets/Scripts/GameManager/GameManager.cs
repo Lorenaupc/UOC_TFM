@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour {
     public GameObject inventoryPanel;
     public GameObject shopInventoryPanel;
 
+    //Shops inventories
+    public PlayerInventory fruitsInventory;
+    public PlayerInventory seedsInventory;
+    public PlayerInventory potionsInventory;
+
     private void Awake()
     {
         if (instance == null)
@@ -117,15 +122,26 @@ public class GameManager : MonoBehaviour {
                         }
                     }
                 }
-                else if (hit.collider.tag.Equals("Shops"))
+                else if (hit.collider.tag.Equals("Shops") && !inventoryPanel.activeSelf)
                 {
                     inventoryPanel.transform.parent.GetComponent<InventoryCanvasManager>().activeInventoryMenu();
                     inventoryPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0.5f);
                     inventoryPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0.5f);
                     inventoryPanel.GetComponent<RectTransform>().pivot = new Vector2(0, 0.5f);
 
+                    if (hit.collider.name.Contains("Fruit"))
+                    {
+                        shopInventoryPanel.GetComponent<InventoryShopManager>().playerInventory = fruitsInventory;
+                    }
+                    else if (hit.collider.name.Contains("Seed"))
+                    {
+                        shopInventoryPanel.GetComponent<InventoryShopManager>().playerInventory = seedsInventory;
+                    }
+                    else if (hit.collider.name.Contains("Potion"))
+                    {
+                        shopInventoryPanel.GetComponent<InventoryShopManager>().playerInventory = potionsInventory;
+                    }
                     shopInventoryPanel.transform.parent.GetComponent<InventoryCanvasManager>().activeShopInventoryMenu();
-                    //sell objects
                 }
             }
         }

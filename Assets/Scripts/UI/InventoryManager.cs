@@ -62,7 +62,7 @@ public class InventoryManager : MonoBehaviour {
 
         if (newItem != null)
         {
-            if (newItem.name.Contains("Seed"))
+            if (newItem.name.Contains("Seed") || newItem.name.Contains("Key"))
             {
                 numberHeld.SetActive(false);
                 useButton.SetActive(false);
@@ -230,27 +230,30 @@ public class InventoryManager : MonoBehaviour {
     {
         int index = -1;
 
-        for (int i = 0; i < playerInventory.inventory.Count; i++)
+        if (!item.unique)
         {
-            if (playerInventory.inventory[i].name == item.name)
+            for (int i = 0; i < playerInventory.inventory.Count; i++)
             {
-                index = i;
-                break;
+                if (playerInventory.inventory[i].name == item.name)
+                {
+                    index = i;
+                    break;
+                }
             }
-        }
-        if (index != -1)
-        {
-            playerInventory.inventory[index].count--;
-            if (playerInventory.inventory[index].count == 0)
+            if (index != -1)
             {
-                GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().removeObjectFromUI(playerInventory.inventory[index]);
-                DeleteInventoryNullItems();
+                playerInventory.inventory[index].count--;
+                if (playerInventory.inventory[index].count == 0)
+                {
+                    GameObject.FindGameObjectWithTag("Canvas").GetComponent<Tools>().removeObjectFromUI(playerInventory.inventory[index]);
+                    DeleteInventoryNullItems();
+                }
+                else if (playerInventory.inventory[index].isOnUI)
+                {
+                    mainCanvas.updateCountItemsExternal(playerInventory.inventory[index].positionOnUI);
+                }
+                ReloadInventoryFromExternal();
             }
-            else if (playerInventory.inventory[index].isOnUI)
-            {
-                mainCanvas.updateCountItemsExternal(playerInventory.inventory[index].positionOnUI);
-            }
-            ReloadInventoryFromExternal();
         }
     }
 }

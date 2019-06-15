@@ -72,6 +72,7 @@ public class InventoryCanvasManager : MonoBehaviour {
             shopPanel.SetActive(true);
             sell.enabled = true;
             buy.enabled = true;
+            shopPanel.GetComponent<InventoryShopManager>().CreateInventory();
             Time.timeScale = 0f;
         }
         else

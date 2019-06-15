@@ -235,6 +235,9 @@ public class GoblinEnemyAI : MonoBehaviour{
             prefab.GetComponent<SpriteRenderer>().sprite = lootableObjects[x].itemImage;
             prefab.GetComponent<LootCollider>().item = lootableObjects[x];
             prefab.GetComponent<LootCollider>().item.count = 1;
+
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().maximumHealth += 3;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().changeHealth(3);
         }
     }
 

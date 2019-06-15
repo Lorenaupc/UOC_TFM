@@ -32,7 +32,14 @@ public class InventorySlot : MonoBehaviour {
         {
             if (manager.GetComponentInParent<InventoryCanvasManager>().shopInventoryUsed)
             {
-                manager.SetupDescriptionButton(item.itemDescription + "\n Coste de venta: "+ item.sell_cost + "z", false, item, false, false);
+                if (!item.unique)
+                {
+                    manager.SetupDescriptionButton(item.itemDescription + "\n Coste de venta: " + item.sell_cost + "z", false, item, false, false);
+                }
+                else
+                {
+                    manager.SetupDescriptionButton(item.itemDescription, false, item, false, false);
+                }
             }
             else
             {

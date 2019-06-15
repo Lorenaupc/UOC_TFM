@@ -219,11 +219,13 @@ public class EnemyAI : MonoBehaviour {
         }
         else if (transform.localScale.x == 7)
         {
-            //FALTA PONER UNA LLAVE LOOTEABLE
             int x = Random.Range(0, lootableObjects.Count);
             GameObject prefab = Instantiate(lootedPrefab, transform.position, Quaternion.identity);
             prefab.GetComponent<SpriteRenderer>().sprite = lootableObjects[x].itemImage;
             prefab.GetComponent<LootCollider>().item = lootableObjects[x];
+
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().maximumHealth += 3;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().changeHealth(3);
         }
     }
 

@@ -23,7 +23,7 @@ public class InventoryShopManager : MonoBehaviour {
         SetText("");
     }
 
-    private void CreateInventory()
+    internal void CreateInventory()
     {
         if (playerInventory)
         {
