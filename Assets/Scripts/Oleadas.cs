@@ -40,12 +40,21 @@ public class Oleadas : MonoBehaviour {
     private void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length == 0 && currentOleadas == numOleadas)
+        bool killed = true;
+        foreach (GameObject enemy in enemies)
         {
+            if (enemy.name.Equals("Enemy(Clone)") || enemy.name.Equals("EnemyBig(Clone)") || enemy.name.Equals("Boss(Clone)"))
+            {
+                killed = false;
+            }
+        }
+        if (killed && currentOleadas == numOleadas)
+        {
+            GetComponent<DisableTransitions>().Enable();
+            activada = false;
             foreach (GameObject fence in fences)
             {
                 fence.SetActive(false);
-                activada = false;
             }
             //activate shop
             if (once)
@@ -81,6 +90,7 @@ public class Oleadas : MonoBehaviour {
     private void createOleada()
     {
         Destroy(GetComponent<CircleCollider2D>());
+        GetComponent<DisableTransitions>().Disable();
         activada = true;
         foreach (GameObject fence in fences)
         {

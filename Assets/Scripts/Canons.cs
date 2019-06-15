@@ -8,14 +8,20 @@ public class Canons : MonoBehaviour {
     public Vector2 speed;
     public GameObject oleadaActivada;
 
+    bool once = true;
+
 	void Update () {
 
-        if (oleadaActivada.GetComponent<Oleadas>().activada && !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().died)
+        if (oleadaActivada.GetComponent<Oleadas>().activada)
         {
-            InvokeRepeating("ShootProjectiles", 0, 5);
+            if (once)
+            {
+                InvokeRepeating("ShootProjectiles", 0, 5);
+                once = false;
+            }
         }
 
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().died)
+        if (!oleadaActivada.GetComponent<Oleadas>().activada)
         {
             CancelInvoke();
         }

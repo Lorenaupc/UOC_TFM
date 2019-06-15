@@ -17,7 +17,7 @@ public class Transitions : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && !colliding)
+        if (collision.tag == "Player" && !colliding && this.isActiveAndEnabled)
         {
             collision.transform.position += playerChange;
             cam.minPosition += cameraChange;

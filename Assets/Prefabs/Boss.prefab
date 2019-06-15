@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   lootableObjects:
-  - {fileID: 11400000, guid: 20a9a780a6bb1314fb3b059a942e57e7, type: 2}
+  - {fileID: 11400000, guid: b1de77d1c254c14488d827831e8f2f2e, type: 2}
   lootedPrefab: {fileID: 1364626597928646, guid: 3e084168303e1ce40b5ce0349b979c7d,
     type: 2}
 --- !u!114 &114302795731211526
