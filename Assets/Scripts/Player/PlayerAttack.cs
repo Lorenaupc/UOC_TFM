@@ -23,10 +23,10 @@ public class PlayerAttack : MonoBehaviour {
                     {
                         Vector2 difference = hit.transform.position - transform.position;
                         difference = difference.normalized * thrust;
-                        hit.AddForce(difference, ForceMode2D.Impulse);
 
                         if (hit.name.Contains("Goblin"))
                         {
+                            hit.AddForce(difference, ForceMode2D.Impulse);
                             hit.GetComponent<GoblinEnemyAI>().currentState = GoblinEnemyState.stagger;
                             collision.GetComponent<GoblinEnemyAI>().KnockHit(hit, transform.GetComponentInParent<PlayerHealth>().attackPower);
                         }
@@ -39,6 +39,7 @@ public class PlayerAttack : MonoBehaviour {
                         }
                         else
                         {
+                            hit.AddForce(difference, ForceMode2D.Impulse);
                             hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
                             collision.GetComponent<EnemyAI>().KnockHit(hit, transform.GetComponentInParent<PlayerHealth>().attackPower);
                         }
@@ -47,22 +48,21 @@ public class PlayerAttack : MonoBehaviour {
                     {
                         Vector2 difference = hit.transform.position - transform.position;
                         difference = difference.normalized * 1;
-                        hit.AddForce(difference, ForceMode2D.Impulse);
 
                         if (hit.name.Contains("Goblin"))
                         {
+                            hit.AddForce(difference, ForceMode2D.Impulse);
                             hit.GetComponent<GoblinEnemyAI>().currentState = GoblinEnemyState.stagger;
                             collision.GetComponent<GoblinEnemyAI>().KnockHitWithoutDamage(hit);
                         }
                         else if (hit.name.Contains("Skeleton"))
                         {
-                            Vector2 diff = hit.transform.position - transform.position;
-                            diff = diff.normalized;
                             hit.GetComponent<BowAttack>().currentState = SkeletonEnemyState.stagger;
-                            collision.GetComponent<BowAttack>().KnockHitWithoutDamage(hit, diff);
+                            collision.GetComponent<BowAttack>().KnockHitWithoutDamage(hit);
                         }
                         else
                         {
+                            hit.AddForce(difference, ForceMode2D.Impulse);
                             hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
                             collision.GetComponent<EnemyAI>().KnockHitWithoutDamage(hit);
                         }

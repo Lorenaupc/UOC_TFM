@@ -25,6 +25,12 @@ public class InventoryShopManager : MonoBehaviour {
 
     internal void CreateInventory()
     {
+        //For changing shop inventory, destroy content from before
+        foreach(Transform child in inventoryPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         if (playerInventory)
         {
             for(int i = 0; i < playerInventory.inventory.Count; i++)

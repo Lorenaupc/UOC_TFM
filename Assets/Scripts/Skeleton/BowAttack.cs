@@ -36,7 +36,15 @@ public class BowAttack : MonoBehaviour {
     void Start()
     {
         deadSkeleton = false;
-        transform.position = points[0].position;
+        if (points.Length != 0)
+        {
+            transform.position = points[0].position;
+        }
+        else
+        {
+            attackRadious = 15;
+        }
+
         currentPoint = 0;
 
         currentState = SkeletonEnemyState.patrol;
@@ -77,19 +85,29 @@ public class BowAttack : MonoBehaviour {
                 animator.SetBool("attack", false);
                 CancelInvoke("ShootArrow");
                 rb2d.bodyType = RigidbodyType2D.Dynamic;
-                if (Vector3.Distance(transform.position, points[currentPoint].position) < 0.5f)
-                {
-                    currentPoint++;
-                }
 
-                if (currentPoint >= points.Length)
+                if (points.Length != 0)
                 {
-                    currentPoint = 0;
-                }
+                    if (Vector3.Distance(transform.position, points[currentPoint].position) < 0.5f)
+                    {
+                        currentPoint++;
+                    }
 
-                Vector3 temp = Vector3.MoveTowards(transform.position, points[currentPoint].position, speed * Time.deltaTime);
-                rb2d.MovePosition(temp);
-                SetAnimatorsFloats(temp - transform.position);
+                    if (currentPoint >= points.Length)
+                    {
+                        currentPoint = 0;
+                    }
+
+                    Vector3 temp = Vector3.MoveTowards(transform.position, points[currentPoint].position, speed * Time.deltaTime);
+                    rb2d.MovePosition(temp);
+                    SetAnimatorsFloats(temp - transform.position);
+                }
+                else
+                {
+                    Vector3 temp = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+                    SetAnimatorsFloats(temp - transform.position);
+                    rb2d.MovePosition(temp);
+                }
                 changeState(SkeletonEnemyState.patrol);
             }
         }
@@ -125,9 +143,9 @@ public class BowAttack : MonoBehaviour {
         }
     }
 
-    public void KnockHitWithoutDamage(Rigidbody2D hit, Vector2 difference)
+    public void KnockHitWithoutDamage(Rigidbody2D hit)
     {
-        StartCoroutine(KnockWithoutDamage(hit, difference));
+        StartCoroutine(KnockWithoutDamage(hit));
     }
 
     public void KnockHit(Rigidbody2D hit, int attackPower, Vector2 difference)
@@ -135,13 +153,12 @@ public class BowAttack : MonoBehaviour {
         StartCoroutine(Knock(hit, attackPower, difference));
     }
 
-    private IEnumerator KnockWithoutDamage(Rigidbody2D hit, Vector2 difference)
+    private IEnumerator KnockWithoutDamage(Rigidbody2D hit)
     {
         if (hit != null)
         {
             CancelInvoke("ShootArrow");
             rb2d.bodyType = RigidbodyType2D.Dynamic;
-            hit.AddForce(difference, ForceMode2D.Impulse);
 
             yield return new WaitForSeconds(0.2f);
             hit.velocity = Vector2.zero;

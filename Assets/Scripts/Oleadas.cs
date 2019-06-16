@@ -18,6 +18,7 @@ public class Oleadas : MonoBehaviour {
     internal bool activada;
 
     bool once = true;
+    bool isColliding = false;
 
     private void Start()
     {
@@ -39,6 +40,8 @@ public class Oleadas : MonoBehaviour {
 
     private void Update()
     {
+        isColliding = false;
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         bool killed = true;
         foreach (GameObject enemy in enemies)
@@ -81,8 +84,9 @@ public class Oleadas : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && !isColliding)
         {
+            isColliding = true;
             createOleada();
         }
     }
