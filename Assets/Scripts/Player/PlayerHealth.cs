@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
@@ -107,8 +108,27 @@ public class PlayerHealth : MonoBehaviour {
 
     private IEnumerator dead()
     {
-        GetComponent<PlayerMovement>().animator.SetTrigger("death");
-        yield return new WaitForSeconds(1f);
-        Destroy(this.gameObject);
+        GetComponent<PlayerMovement>().animator.SetBool("death", true);
+        yield return new WaitForSeconds(5f);
+        Restart();
+        yield return new WaitForSeconds(0.2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        yield return new WaitForSeconds(2f);
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<Shops>().Start();
+    }
+
+    private void Restart()
+    {
+        transform.position = Vector3.zero;
+        health = maximumHealth = 4;
+        attackPower = 1;
+        died = false;
+
+        GetComponent<SpriteRenderer>().color = Color.white;
+        GetComponent<PlayerMovement>().animator.SetBool("death", false);
+
+        hearts.text = "x" + health;
+        orange = new Color(1, 0.64f, 0);
+        hearts.color = orange;
     }
 }

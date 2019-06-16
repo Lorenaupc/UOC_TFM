@@ -12,8 +12,7 @@ public class Oleadas : MonoBehaviour {
     private float timeLeft;
     public float numOleadas;
     private float currentOleadas;
-    private CircleCollider2D triggerCollider;
-    public Text oleadaText;
+    internal Text oleadaText;
 
     internal bool activada;
 
@@ -24,8 +23,6 @@ public class Oleadas : MonoBehaviour {
     {
         activada = false;
         timeLeft = repeatTime+1;
-        triggerCollider = GetComponent<CircleCollider2D>();
-        oleadaText.enabled = false;
     }
 
     public void RepeatedText()
@@ -35,6 +32,7 @@ public class Oleadas : MonoBehaviour {
         {
             timeLeft = repeatTime;
         }
+        oleadaText.GetComponent<Text>().enabled = true;
         oleadaText.text = "Siguiente oleada en: " + Mathf.Round(timeLeft);
     }
 
@@ -66,16 +64,19 @@ public class Oleadas : MonoBehaviour {
                 {
                     GameObject.FindGameObjectWithTag("Canvas").GetComponent<DialogBoxManager>().RandomMessage("Has desbloqueado la tienda de frutas!");
                     GameObject.FindGameObjectWithTag("GameManager").GetComponent<Shops>().fruitsShop.SetActive(true);
+                    GameObject.FindGameObjectWithTag("GameManager").GetComponent<Shops>().activateFruitShop = true;
                 }
                 else if (transform.name.Equals("OleadaForest3"))
                 {
                     GameObject.FindGameObjectWithTag("Canvas").GetComponent<DialogBoxManager>().RandomMessage("Has desbloqueado la tienda de semillas!");
                     GameObject.FindGameObjectWithTag("GameManager").GetComponent<Shops>().seedsShop.SetActive(true);
+                    GameObject.FindGameObjectWithTag("GameManager").GetComponent<Shops>().activateSeedShop = true;
                 }
                 else if (transform.name.Equals("OleadaForest4"))
                 {
                     GameObject.FindGameObjectWithTag("Canvas").GetComponent<DialogBoxManager>().RandomMessage("Has desbloqueado la tienda de pociones!");
                     GameObject.FindGameObjectWithTag("GameManager").GetComponent<Shops>().potionsShop.SetActive(true);
+                    GameObject.FindGameObjectWithTag("GameManager").GetComponent<Shops>().activatePotionShop = true;
                 }
                 once = false;
             }
@@ -87,20 +88,21 @@ public class Oleadas : MonoBehaviour {
         if (collision.tag == "Player" && !isColliding)
         {
             isColliding = true;
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<Shops>().oleadatext.SetActive(true);
+            oleadaText = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Shops>().oleadatext.GetComponent<Text>();
             createOleada();
         }
     }
 
     private void createOleada()
     {
-        Destroy(GetComponent<CircleCollider2D>());
+        GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<DisableTransitions>().Disable();
         activada = true;
         foreach (GameObject fence in fences)
         {
             fence.SetActive(true);
         }
-        oleadaText.enabled = true;
         InvokeRepeating("RepeatedText",0,1);
         InvokeRepeating("setOleadas", 0, repeatTime);
     }
@@ -110,7 +112,7 @@ public class Oleadas : MonoBehaviour {
         if (currentOleadas == numOleadas - 1)
         {
             CancelInvoke("RepeatedText");
-            oleadaText.enabled = false;
+            oleadaText.GetComponent<Text>().enabled = false;
         }
 
         if (currentOleadas < numOleadas)
