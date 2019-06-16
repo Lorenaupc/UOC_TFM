@@ -22,7 +22,7 @@ public class CreateGame : MonoBehaviour {
         else
         {
             PlayerPrefs.SetString("PlayerName", inputf.text);
-            SceneManager.LoadScene("Farm");
+            SceneManager.LoadScene("Map");
         }
     }
 }

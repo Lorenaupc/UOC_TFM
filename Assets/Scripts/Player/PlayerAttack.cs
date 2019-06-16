@@ -79,14 +79,23 @@ public class PlayerAttack : MonoBehaviour {
 
                 if (collision.tag.Equals("Player"))
                 {
-                    if (!transform.name.Contains("Skeleton"))
+                    if (!collision.gameObject.GetComponent<PlayerHealth>().died)
                     {
-                        Vector2 difference = hit.transform.position - transform.position;
-                        difference = difference.normalized * 2;
-                        hit.AddForce(difference, ForceMode2D.Impulse);
-
-                        hit.GetComponent<PlayerMovement>().currentState = PlayerState.stagger;
-                        collision.GetComponent<PlayerMovement>().KnockHit();
+                        if (!transform.name.Contains("Skeleton"))
+                        {
+                            Vector2 difference = hit.transform.position - transform.position;
+                            if (transform.name.Contains("Goblin"))
+                            {
+                                difference = difference.normalized * 2;
+                            }
+                            else
+                            {
+                                difference = difference.normalized * thrust;
+                            }
+                            hit.AddForce(difference, ForceMode2D.Impulse);
+                            hit.GetComponent<PlayerMovement>().currentState = PlayerState.stagger;
+                            collision.GetComponent<PlayerMovement>().KnockHit();
+                        }
                     }
                 }
             }

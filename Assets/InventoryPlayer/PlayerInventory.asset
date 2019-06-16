@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   inventory:
-  - {fileID: 11400000, guid: f6afa2e53659e0146b5fd905ead8fb8c, type: 2}
   - {fileID: 11400000, guid: b41735e134684a246b4ea56141b7a1ee, type: 2}
-  - {fileID: 11400000, guid: b1de77d1c254c14488d827831e8f2f2e, type: 2}
+  - {fileID: 11400000, guid: f809312bf766453499676ab134aa7a1c, type: 2}
   - {fileID: 11400000, guid: ed7fa2043a579eb4d872015ec02b31c0, type: 2}
   - {fileID: 11400000, guid: 8bf7e809c0fc29141885cfce0ca5331c, type: 2}
-  - {fileID: 11400000, guid: 7acf15737156aa84d8eb939d3a61be3d, type: 2}
+  - {fileID: 11400000, guid: e7518f0fd56a72a43927f58edd93151d, type: 2}
+  - {fileID: 11400000, guid: 23abf92274d63e041afa678624655984, type: 2}
+  - {fileID: 11400000, guid: 2e47b037620ed1149baac4f586065f3c, type: 2}
+  - {fileID: 11400000, guid: e65c8f3301626034d81b261d83c18eed, type: 2}

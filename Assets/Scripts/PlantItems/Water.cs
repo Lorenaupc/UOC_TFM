@@ -24,7 +24,6 @@ public class Water : MonoBehaviour {
     internal void fillWaterCan()
     {
         waterCounter = 20;
-        Debug.Log("REFILLED");
     }
 
     internal bool decreaseWaterCan()
@@ -36,7 +35,7 @@ public class Water : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Water Can empty");
+            canvas.GetComponent<DialogBoxManager>().RandomMessage("Rellena la regadera en una balsa de agua");
             return false;
         }
     }

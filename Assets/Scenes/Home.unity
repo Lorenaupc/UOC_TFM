@@ -6451,7 +6451,7 @@ Prefab:
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
       propertyPath: maxPosition.x
-      value: 7.22
+      value: 9.8
       objectReference: {fileID: 0}
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
@@ -6466,7 +6466,7 @@ Prefab:
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
       propertyPath: minPosition.x
-      value: 3.75
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
