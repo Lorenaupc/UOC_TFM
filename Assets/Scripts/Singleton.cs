@@ -26,14 +26,35 @@ public class Singleton : MonoBehaviour {
         {
             foreach (Transform child in transform)
             {
-                child.gameObject.SetActive(false);
+                if (child.gameObject.name == "ItemsFarm")
+                {
+                    foreach (Transform renderChild in child)
+                    {
+                        renderChild.GetComponent<SpriteRenderer>().enabled = false;
+                        renderChild.GetComponent<BoxCollider2D>().enabled = false;
+                    }
+                }
+                else{
+                    child.gameObject.SetActive(false);
+                }
             }
         }
         else
         {
             foreach (Transform child in transform)
             {
-                child.gameObject.SetActive(true);
+                if (child.gameObject.name == "ItemsFarm")
+                {
+                    foreach (Transform renderChild in child)
+                    {
+                        renderChild.GetComponent<SpriteRenderer>().enabled = true;
+                        renderChild.GetComponent<BoxCollider2D>().enabled = true;
+                    }
+                }
+                else
+                {
+                    child.gameObject.SetActive(true);
+                }
             }
         }
     }

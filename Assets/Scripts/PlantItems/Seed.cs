@@ -45,8 +45,7 @@ public class Seed : MonoBehaviour {
         }
         else if (type.Equals("Onion"))
         {
-            time = 15;
-            //time = 180;
+            time = 180;
         }
         else if (type.Equals("Pineapple"))
         {
@@ -96,7 +95,7 @@ public class Seed : MonoBehaviour {
     {
         if (enableWater)
         {
-            if (watered && !growed)
+            if (watered && !growed && transform.gameObject.activeSelf)
             {
                 GetComponent<SpriteRenderer>().sprite = wateredSeed;
                 StartCoroutine(GrowPlant());
