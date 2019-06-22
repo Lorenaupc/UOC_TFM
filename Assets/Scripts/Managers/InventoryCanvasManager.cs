@@ -58,6 +58,7 @@ public class InventoryCanvasManager : MonoBehaviour {
             inventoryPanel.GetComponent<RectTransform>().anchorMax = anchorMax;
             inventoryPanel.GetComponent<RectTransform>().anchorMin = anchorMin;
             inventoryPanel.GetComponent<RectTransform>().pivot = pivot;
+            inventoryPanel.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
             inventoryPanel.SetActive(false);
             Time.timeScale = 1f;

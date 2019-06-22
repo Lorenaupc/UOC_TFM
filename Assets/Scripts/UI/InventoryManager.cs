@@ -121,7 +121,7 @@ public class InventoryManager : MonoBehaviour {
             }
         }
         if (index != -1)
-        {
+        {               //Item already in inventory
             playerInventory.inventory[index].count++;
             if (playerInventory.inventory[index].isOnUI)
             {
@@ -129,11 +129,8 @@ public class InventoryManager : MonoBehaviour {
             }
         }
         else
-        {
-            if (itemToAdd.count.Equals(0))
-            {
-                itemToAdd.count++;
-            }
+        {               //New item
+            itemToAdd.count = 1;
             playerInventory.inventory.Add(itemToAdd);
 
             GameObject instantiatedSlot = Instantiate(blankSlot, inventoryPanel.transform.position, Quaternion.identity);
