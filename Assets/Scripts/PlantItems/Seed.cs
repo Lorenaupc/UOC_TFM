@@ -45,7 +45,8 @@ public class Seed : MonoBehaviour {
         }
         else if (type.Equals("Onion"))
         {
-            time = 180;
+            time = 15;
+            //time = 180;
         }
         else if (type.Equals("Pineapple"))
         {
