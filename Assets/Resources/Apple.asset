@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   itemName: Manzana
-  itemDescription: Manzana
+  itemDescription: "Manzana, recupera 10 puntos de energ\xEDa"
   itemImage: {fileID: 21300316, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
   count: 5
   unique: 0

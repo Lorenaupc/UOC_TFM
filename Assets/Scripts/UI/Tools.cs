@@ -66,7 +66,6 @@ public class Tools : MonoBehaviour {
     public void setWater()
     {
         currentTool = "Water";
-        Debug.Log("WATER");
     }
 
     public void setSeed()

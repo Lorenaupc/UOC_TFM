@@ -7,6 +7,13 @@ public class CheckKeys : MonoBehaviour {
     public PlayerInventory playerInventory;
     public InventoryItem key;
 
+    private GameObject canvas;
+
+    private void Start()
+    {
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+    }
+
     void Update()
     {
         if (playerInventory.inventory.Contains(key))
@@ -20,4 +27,13 @@ public class CheckKeys : MonoBehaviour {
         }
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Player"))
+        {
+            canvas.GetComponent<DialogBoxManager>().RandomMessage("No tienes la llave para entrar");
+        }
+    }
+
 }
