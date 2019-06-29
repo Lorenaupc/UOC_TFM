@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public PlayerState currentState;
     private Rigidbody2D rigidbody2d;
-    //private readonly float velocity = 4.5f;
+
     public float velocity;
     internal Animator animator;
     private Vector3 change;

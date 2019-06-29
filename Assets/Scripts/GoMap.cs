@@ -9,7 +9,7 @@ public class GoMap : MonoBehaviour {
     {
         if (collision.tag.Equals("Player"))
         {
-            SceneManager.LoadScene("Map");            
+            SceneManager.LoadScene("Map");
         }
     }
 }

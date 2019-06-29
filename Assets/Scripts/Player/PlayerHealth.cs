@@ -29,8 +29,16 @@ public class PlayerHealth : MonoBehaviour {
         orange = new Color(1,0.64f,0);
         hearts.color = orange;
     }
-	
-	public void changeHealth(int amount)
+
+    private void FixedUpdate()
+    {
+        if (Input.GetButtonDown("Return"))
+        {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<DialogueManager>().nextSentence();
+        }
+    }
+        
+    public void changeHealth(int amount)
     {
         switch (amount)
         {

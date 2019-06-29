@@ -7,6 +7,9 @@ public class SignDialog : MonoBehaviour {
 
     public string signText;
     public GameObject dialogBox;
+    public int space;
+
+    private float width;
 
     private void Start()
     {
@@ -20,6 +23,11 @@ public class SignDialog : MonoBehaviour {
             if (collision.tag.Equals("Player"))
             {
                 dialogBox.SetActive(true);
+                if (space != 0)
+                {
+                    width = dialogBox.GetComponent<RectTransform>().rect.width;
+                    dialogBox.GetComponent<RectTransform>().sizeDelta = new Vector2(width + space, dialogBox.GetComponent<RectTransform>().rect.height);
+                }
                 dialogBox.GetComponentInChildren<Text>().text = signText;
             }
         }
@@ -31,6 +39,10 @@ public class SignDialog : MonoBehaviour {
         {
             if (collision.tag.Equals("Player"))
             {
+                if (space != 0)
+                {
+                    dialogBox.GetComponent<RectTransform>().sizeDelta = new Vector2(width - space, dialogBox.GetComponent<RectTransform>().rect.height);
+                }
                 dialogBox.SetActive(false);
             }
         }
