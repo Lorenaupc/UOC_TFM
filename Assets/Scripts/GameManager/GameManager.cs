@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour {
                     inventoryPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0.5f);
                     inventoryPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0.5f);
                     inventoryPanel.GetComponent<RectTransform>().pivot = new Vector2(0, 0.5f);
-                    inventoryPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(126, 0);
+                    inventoryPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(18, 0);
 
                     if (hit.collider.name.Contains("Fruit"))
                     {

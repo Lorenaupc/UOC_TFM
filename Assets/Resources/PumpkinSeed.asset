@@ -14,7 +14,7 @@ MonoBehaviour:
   itemName: Semillas de calabaza
   itemDescription: Semillas de calabaza
   itemImage: {fileID: 21300038, guid: 78eb9d5dc53cc8b4a8f0f584da1fe88a, type: 3}
-  count: 1
+  count: 9
   unique: 0
   usable: 1
   isOnUI: 0
