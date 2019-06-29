@@ -6051,22 +6051,22 @@ Prefab:
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
       propertyPath: maxPosition.x
-      value: 2.3
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
       propertyPath: minPosition.y
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
       propertyPath: maxPosition.y
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
       propertyPath: minPosition.x
-      value: -6.3
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 114270768264925294, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
@@ -6076,7 +6076,7 @@ Prefab:
     - target: {fileID: 20430356940068132, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}
       propertyPath: orthographic size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 20430356940068132, guid: 7a51c26dc78e8754b8454a9f5bc79aaf,
         type: 2}

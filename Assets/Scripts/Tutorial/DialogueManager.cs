@@ -36,12 +36,9 @@ public class DialogueManager : MonoBehaviour {
 
     void DisplayNextSentence()
     {
-        if (sentences.Count == 1)
+        if (sentences.Count <= 0)
         {
             player.GetComponent<PlayerMovement>().enabled = true;
-        }
-        else if (sentences.Count <= 0)
-        {
             dialogPanel.SetActive(false);
             return;
         }

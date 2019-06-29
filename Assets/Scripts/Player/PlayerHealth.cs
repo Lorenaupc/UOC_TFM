@@ -15,9 +15,12 @@ public class PlayerHealth : MonoBehaviour {
     internal int attackPower;
     private Color orange;
 
+    private DialogueAlert alert;
+
     private void Awake()
     {
         name = PlayerPrefs.GetString("PlayerName");
+        alert = GameObject.FindGameObjectWithTag("Alert").GetComponent<DialogueAlert>();
     }
 
     void Start () {
@@ -35,6 +38,10 @@ public class PlayerHealth : MonoBehaviour {
         if (Input.GetButtonDown("Return"))
         {
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<DialogueManager>().nextSentence();
+            if (alert)
+            {
+                alert.nextSentence();
+            }
         }
     }
         
