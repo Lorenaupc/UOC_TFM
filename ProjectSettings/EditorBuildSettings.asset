@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Options.unity
     guid: 4b7ebb3c193580a4191cddda1d4e863a
   - enabled: 1
+    path: Assets/Scenes/Keyboard.unity
+    guid: 969c88ac567a1da4fa5a127bcf585347
+  - enabled: 1
     path: Assets/Scenes/NewGame.unity
     guid: a48d8e4d285f83d4dbeba0e82894f63b
   - enabled: 1
